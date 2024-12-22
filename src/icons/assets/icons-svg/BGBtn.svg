@@ -1,0 +1,9 @@
+<svg class="INDmenu-accordRect" width="40px" height="40px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="#101E27" fill-rule="evenodd">
+        <g transform="translate(13.000000, 13.000000)">
+            <rect x="1.42108547e-13" y="0" width="134.105263" height="134.105263" rx="20.1157895"></rect>
+            <path d="M40.2315789,70.4052632 L100.578947,70.4052632" stroke-width="13.4105263" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path class="INDmenu-accordRect-expanded" d="M40.2315789,70.4052632 L100.578947,70.4052632" stroke-width="13.4105263" stroke-linecap="round" stroke-linejoin="round" transform="translate(70.405263, 70.405263) rotate(90.000000) translate(-70.405263, -70.405263) "></path>
+        </g>
+    </g>
+</svg>

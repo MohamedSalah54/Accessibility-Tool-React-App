@@ -1,0 +1,13 @@
+<svg id="INDmenuHeader_expanded_bg" class="INDmenuHeader_bg" width="525" height="98.031" viewBox="0 0 525 98.031" version="1.1" baseProfile="basic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve">
+	<defs>
+		<linearGradient id="INDmenuHeader_expanded_bg_lg" gradientUnits="userSpaceOnUse" x1="471.6221" y1="318.3057" x2="131.7289" y2="-152.0258">
+			<stop stop-color="#70C383" offset="0%"></stop>
+			<stop stop-color="#0197C2" offset="100%"></stop>
+		</linearGradient>
+	<linearGradient id="INDmenuHeader_expanded_bg_lg" gradientUnits="userSpaceOnUse" x1="471.6221" y1="318.3057" x2="131.7289" y2="-152.0258">
+			<stop stop-color="#70C383" offset="0%"></stop>
+			<stop stop-color="#0197C2" offset="100%"></stop>
+		</linearGradient></defs>
+	<path fill="url(&quot;#INDmenuHeader_expanded_bg_lg&quot;)" d="M0,0v57.862h130.778c10.236,0.946,18.251,9.559,18.251,20.042c0,11.116,9.011,20.127,20.128,20.127
+		h186.21c11.188,0,20.258-9.067,20.258-20.256c0-9.911,7.116-18.158,16.518-19.913H525V0H0z"></path>
+</svg>

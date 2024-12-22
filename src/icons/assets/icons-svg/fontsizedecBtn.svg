@@ -1,0 +1,31 @@
+    <svg class="INDmenu-accordCircle" width="160px" height="160px"
+                                                      viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                      xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                      <g stroke="none" stroke-width="1" fill="" fill-rule="evenodd">
+                                                            <g transform="translate(10.000000, 10.000000)">
+                                                                  <ellipse cx="68.5561656" cy="69.3913043" rx="68.5561656"
+                                                                        ry="69.3913043"></ellipse>
+                                                                  <g transform="translate(38.391453, 38.859130)"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="10.9565217">
+                                                                        <path
+                                                                              d="M2.74224662,30.5321739 L55.0754362,30.5321739">
+                                                                        </path>
+                                                                        <path d=""
+                                                                              transform="translate(34.695652, -1.826087) rotate(90.000000) translate(-34.695652, 1.826087) ">
+                                                                        </path>
+                                                                  </g>
+                                                                  <g class="INDmenu-accordCircle-expanded"
+                                                                        transform="translate(68.556166, 69.391304) rotate(90.000000) translate(-68.556166, -69.391304) translate(38.391453, 38.859130)"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="10.9565217">
+                                                                        <path
+                                                                              d="M2.74224662,30.5321739 L55.0754362,30.5321739">
+                                                                        </path>
+                                                                        <path d=""
+                                                                              transform="translate(34.695652, -1.826087) rotate(90.000000) translate(-34.695652, 1.826087) ">
+                                                                        </path>
+                                                                  </g>
+                                                            </g>
+                                                      </g>
+                                                </svg>

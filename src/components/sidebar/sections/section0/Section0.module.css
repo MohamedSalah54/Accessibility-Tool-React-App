@@ -1,0 +1,243 @@
+.dropdown_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .drop_btn1 {
+    border: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .dropdown_container:not(.arabic) .drop_btn1 {
+    flex-direction: row; /* الترتيب العادي */
+  }
+  
+  /* اللغة العربية: النص قبل الأيقونة */
+  .dropdown_container.arabic .drop_btn1 {
+    flex-direction: row-reverse; /* النص قبل الأيقونة */
+  }
+  
+  .drop_icon {
+    font-size: 20px;
+  }
+  
+  /* عندما تكون اللغة عربية */
+
+  .arabic .dropdown {
+    order: 2; /* الزر يكون أولاً */
+  }
+  
+  .arabic .drop_icon {
+    order: 1; /* الأيقونات تأتي بعد الزر */
+  }
+  
+
+  .Ai_Container{
+    width: 400px;
+    height: 540px;
+    border:1px solid rgb(217, 206, 206);
+    display: flex;
+    position: relative;
+  }
+  .icon_Ai{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 1.3em;
+    top:1em;
+    cursor: pointer;
+
+  }
+  .title_Ai{
+    width: 350px;
+    position: absolute;
+    top: 3em;
+    left: 2em;
+  }
+  .title_Ai h2{
+    width: 350px;
+    position: absolute;
+    left: 2.5em;
+    font-size: 30px;
+  }
+  .title_Ai h3{
+    position: absolute;
+    top:2.5em;
+    font-weight:50;
+    font-size: 20px;
+    left: 2.5em;
+  }
+  .icon_logo_side{
+    width: 30px;
+    height: 30px;
+    color: #000;
+  }
+
+  .container_Four_Cards{
+    height: 250px;
+    width: 100%;
+    position: absolute;
+    top: 12em;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .help_Me{
+    border: 1px solid #d4cbcb;
+    position: absolute;
+    border-radius: 10px;
+    width: 45%;
+    height: 100px;
+    left: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+
+  }
+  .help_Me_Icon{
+    position: absolute;
+    left: 0.5em;
+    top: 2em;
+    width: 35px;
+    height: 35px;
+    color: rgb(195, 128, 186);
+  }
+  .help_Me_P{
+    position: absolute;
+    top:1.3em;
+    left: 4em;
+    font-size: 13px;
+    font-family: sans-serif;
+
+  }
+
+  .difficulty{
+    border-radius: 10px;
+    border: 1px solid #d4cbcb;
+    position: absolute;
+    width: 45%;
+    height: 100px;
+    left: 13em;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .difficulty_Icon{
+    position: absolute;
+    left: 1em;
+    top: 2em;
+    width: 35px;
+    height: 35px;
+    color: rgb(97, 123, 207);  
+  }
+  .difficulty_P{
+    position: absolute;
+    top:1.3em;
+    left: 5em;
+    font-size: 13px;
+    font-family: sans-serif;
+  }
+  .needs{
+    border-radius: 10px;
+    border: 1px solid #d4cbcb;
+    position: absolute;
+    width: 45%;
+    height: 100px;
+    left:1em;
+    top:8em;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .needs_Icon{
+    position: absolute;
+    left: 1em;
+    top: 2em;
+    width: 35px;
+    height: 35px;
+    color: rgb(138, 202, 159);
+
+  }
+  .needs_P{
+    position: absolute;
+    top:1.5em;
+    left: 5em;
+    font-size: 13px;
+    font-family: sans-serif;
+  }
+
+  .challenges{
+    border-radius: 10px;
+    border: 1px solid #d4cbcb;
+    position: absolute;
+    width: 45%;
+    height: 100px;
+    left:13em;
+    top:8em;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .challenges_Icon{
+    position: absolute;
+    left: 0.5em;
+    top: 2em;
+    width: 35px;
+    height: 35px;
+    color: rgb(243, 175, 134);
+  }
+  .challenges_P{
+    position: absolute;
+    top:1.5em;
+    left: 4em;
+    font-size: 13px;
+    font-family: sans-serif;
+  }
+.chat_Ai{
+  width: 100%;
+  height: 150px;
+  position: absolute;
+  top: 27em;
+}
+
+.ai_gpt{
+  position: absolute;
+  top: 2.5em;
+  left: 1em;
+  width: 25px;
+  height: 25px;
+
+}
+.input_Chat{
+  border: none;
+  background-color: rgb(230, 233, 233);
+  border-radius: 20px;
+  padding: 15px;
+  position: absolute;
+  top:2em ;
+  left: 4em;
+  width: 17em;
+  margin: 5px 10px;
+
+}
+.ai_Mute{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 2.5em;
+  right: 1em;
+  cursor: pointer;
+}

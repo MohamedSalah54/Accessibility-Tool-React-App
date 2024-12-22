@@ -1,0 +1,599 @@
+.toggleBtn {
+  position: fixed;
+  bottom: 150px;
+  left: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  border-radius: 50px;
+  color: #fff;
+  border: 5px solid white;
+  cursor: pointer;
+  --indmaincolor: #1c4bb6;
+  background: var(--indmaincolor) !important;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+
+.toggleBtn.arabic {
+  left: initial; /* إزالة الـ left */
+  right: 20px; /* تحديد الـ right لجعل الزر في الجهة اليمنى */
+}
+
+  .toggleBtn svg {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+  } 
+  
+  .selector {
+    display: none;
+  }
+  
+  .toggleBtn:hover .selector {
+    display: inline-block;
+    justify-content: center;
+    margin-bottom: 5px;
+    width: 15px;
+    transition: all 0.3s ease;
+  
+  }
+  
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -450px; /* للمحتوى الإنجليزي */
+    width: 450px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -8px 0 25px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transition: left 0.4s ease-out, opacity 0.4s ease-out, box-shadow 0.4s ease-out, width 0.4s ease-out;
+    z-index: 999;
+  }
+  .sidebar.arabic {
+    left: initial;
+    right: -450px; /* وضع الشريط الجانبي في الجهة اليمنى */
+  }
+  
+  .sidebar.open {
+    left: 0;
+    opacity: 1;
+  }
+  
+  .sidebar.expanded {
+    width: 600px; /* مثال لتوسيع الشريط */
+
+  }
+  
+  
+  .sidebar.open {
+    padding: 0;
+    margin: 0;
+    left: 0;
+    opacity: 1;
+    width: 32.3%;
+    height: 100%;
+    transition: left 0.4s ease-out, right 0.4s ease-out; /* إضافة transition لتغيير الاتجاه */
+  }
+  
+  .sidebar.open.arabic {
+    left: initial; /* إزالة left */
+    right: 0; /* جعل الشريط يظهر من الجهة اليمنى */
+  }
+  .sidebar.open.expanded.arabic {
+    left: initial ;
+    right: 0 ;
+  }
+  
+  .INDmenuHeader_bg {
+    position: absolute;
+    height:129px;
+    transition: width 0.3s ease; /* Make transition smooth */
+    width:30.7em
+  }
+
+  .header {
+    position: relative;
+    height: 17%;
+    width: 100%;
+  }
+  .sidebar.expanded {
+    width: 27em;
+  }
+  .arabic .closeBtn  {
+    position:absolute ;
+    left:1em ;
+    top: 1em;
+    cursor: pointer;
+  }
+
+
+  .closeBtn {
+    position: absolute;
+    left: 22em;
+    top: 0.8em;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+  }
+  
+  
+  .txt {
+    position: absolute;
+    left:6.2em;
+    top:2em;
+    color: white; 
+  
+  }
+  .arabic .txt{
+    position:absolute;
+    left:7.5em
+  }
+  .expandedOpt{
+    position: absolute !important; 
+    top: -9em !important;
+    left: 14em !important;
+    
+     
+     }
+  .expandedTxt{
+    position: absolute;
+    top:1.5em;
+    left:5em;
+    color: white; 
+  }
+
+  .closeBtn_expanded{
+    left:19.5em
+
+   }
+  .INDmenuHeader_bg_expanded{
+    width:27em;
+    position: relative;
+    top:-1em
+  }
+  .logoSide{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0.7em;
+    left: 1em;
+    cursor: pointer;
+  }
+  .arabic .logoSide {
+    right: 1em; /* تغيير الاتجاه ناحية اليمين */
+    left: auto; /* إلغاء الخاصية left */
+  }
+  
+  .opt {
+    position: absolute;
+    top: 1.7em;
+    left: 14em;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0.2em 3em;
+    background: linear-gradient(135deg, #839eb1, #2c3e50) !important;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s ease; /* إضافة تأثير الانتقال */
+  }
+  
+  .opt:hover,
+  .opt:focus {
+    background-color: #34495e !important; /* تغيير الخلفية أثناء المرور أو التركيز */
+  }
+  
+  .languageSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+  }
+  
+  .arr, .eyeOff {
+    position: absolute;
+    top: 1em;
+    color: white;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .arr {
+    left: 3.5em;
+  }
+  
+  .eyeOff {
+    left: 6em;
+  }
+  
+  .arabic .arr {
+    right: 3.5em; /* تحويل الأيقونة إلى اليمين */
+    left: auto; /* إلغاء الـ left */
+  }
+  
+  .arabic .eyeOff {
+    right: 6em; /* تحويل الأيقونة إلى اليمين */
+    left: auto; /* إلغاء الـ left */
+  }
+  
+
+
+
+
+
+
+
+.accessFotter button:hover::after,
+.accessFotter button:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.accessFotter button::after {
+  content: attr(data-tooltip); 
+  position: absolute;
+  top: -70px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #efe7e7; 
+  color: #090909;
+  padding: 10px 15px; 
+  border-radius: 8px; 
+  font-size: 12px;
+  font-weight: 400;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+}
+
+.accessFotter button::before {
+  content: "";
+  position: absolute;
+  top: -9px; 
+  left: 65%; 
+  transform: translateX(-50%) rotate(180deg); 
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #ece4e4 transparent; 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+
+
+ 
+.sidebarBody {
+    height: 70%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f8f9fa;
+    transition: all 0.3s ease-in-out;
+}
+      
+ .sidebarFooter.expanded{
+  width:27em
+ }   
+.sidebarFooter {
+  height: 10%;
+  background-color: #1a1a2e;
+  width: 30.7em;
+}
+
+.accessFotter {
+  display: flex;
+  flex-direction: row; /* ترتيب العناصر من اليسار لليمين بشكل افتراضي */
+  align-items: center;
+  height: 70%;
+}
+
+/* عكس ترتيب العناصر في الـ footer عند اللغة العربية */
+.arabic .accessFotter {
+  flex-direction: row-reverse; /* عكس الترتيب */
+}
+
+.copyright-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* محاذاة النص لليمين عند اللغة العربية */
+.arabic .copyright-footer {
+  justify-content: flex-end; /* محاذاة العناصر لليمين */
+}
+
+.accessFotter button {
+  position: relative;
+  border: none;
+  color: white;
+  background-color: #1a1a2e;
+  align-items: center;
+  margin: auto;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+      
+      .accessFotter button:hover::after,
+      .accessFotter button:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .accessFotter button::after {
+        content: attr(data-tooltip); 
+        position: absolute;
+        top: -70px; 
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #efe7e7; 
+        color: #090909;
+        padding: 10px 15px; 
+        border-radius: 8px; 
+        font-size: 12px;
+        font-weight: 400;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+      }
+      
+      .accessFotter button::before {
+        content: "";
+        position: absolute;
+        top: -9px; 
+        left: 65%; 
+        transform: translateX(-50%) rotate(180deg); 
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent #ece4e4 transparent; 
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      
+      
+      
+      .copyrightFooter span {
+        color: white;
+        margin-left: 30%;
+        align-items: center;
+      }
+      
+      .equal {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+      }
+      
+      .equal:hover {
+        text-decoration: underline;
+      }
+      
+      @media   (min-width: 1200px) and (max-width: 1300px) {
+        .sidebar {
+          width: 30em;
+      }
+      .INDmenuHeader_bg {
+        width:30em;
+      }
+    
+   
+      .sidebar.open {
+          width: 30em;
+      }
+  
+      .toggleBtn {
+          bottom: 120px;
+          left: 15px;
+      }
+  
+      .accessFotter button {
+          font-size: 14px;
+          padding: 10px 20px;
+      }
+      .sidebar.expanded{
+        width: 27em;
+
+      }
+      .INDmenuHeader_bg_expanded{
+        width:27em
+      }
+      .sidebarFooter.expanded{
+        width:27em
+      }
+      .sidebarFooter{
+        width:30em
+      }
+  
+      }
+    
+    @media   (min-width: 768px) and (max-width: 1200px) {
+        .sidebar {
+            width: 30em;
+        }
+        .INDmenuHeader_bg {
+          width:30em;
+        }
+        
+    
+        .sidebar.open {
+            width: 30em;
+        }
+        .INDmenuHeader_bg_expanded{
+          width:27em
+        }
+        .sidebarFooter.expanded{
+          width:27em
+        }
+      
+    
+        .toggleBtn {
+            bottom: 120px;
+            left: 15px;
+        }
+    
+        .accessFotter button {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+        .sidebar.expanded{
+          width: 27em;
+  
+        }
+        .sidebarFooter{
+          width:30em
+        }
+    }
+
+   
+
+    @media   (min-width: 524px) and (max-width: 768px) {
+      .sidebar {
+        width: 25em;
+    }
+    .INDmenuHeader_bg {
+      top:-1em;     
+      width:25em;
+    }
+   
+    .closeBtn{
+      left:18em
+    }
+    .sidebar.open {
+        width: 25em;
+    }
+  .opt{
+    position: absolute;
+  }
+    .toggleBtn {
+        bottom: 120px;
+        left: 15px;
+    }
+
+    .accessFotter button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    .txt.arabicTxt{
+      position: absolute;
+      left:6em
+    }
+    .arabicOpt{
+      position: absolute;
+      left:9em;
+    }
+  
+    .txt{
+      left:5em;
+    }
+   
+    .sidebarFooter{
+      width:25em
+      
+    }
+    .sidebarFooter.expanded{
+      width:25em
+    }
+    }
+
+    @media   (min-width: 370px) and (max-width: 524px) {
+      .sidebar {
+        width: 23em;
+    }
+    .INDmenuHeader_bg {
+      top:-1em;     
+      width:23em;
+    }
+    .closeBtn{
+      left:16em
+    }
+ 
+    .sidebar.open {
+        width: 23em;
+    }
+
+    .toggleBtn {
+        bottom: 120px;
+        left: 15px;
+    }
+    .txt{
+      position: absolute;
+      left:4em;
+      top:1.5em;
+    }
+    .txt.arabicTxt{
+      position: absolute;
+      left:6em
+    }
+    .arabicOpt{
+      position: absolute;
+      left:9em;
+    }
+
+    .opt{
+      position: absolute;
+    }
+ 
+  
+    .accessFotter button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+  
+      .sidebarFooter{
+      width:23em
+    }
+    .sidebarFooter.expanded{
+      width:23em
+    }
+    }
+
+    @media   (max-width: 370px) {
+      .sidebar {
+        width: 23em;
+    }
+
+    .sidebar.open {
+        width: 23em;
+    }
+
+    .toggleBtn {
+        bottom: 120px;
+        left: 15px;
+    }
+
+    .accessFotter button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    .opt{
+      left: 12em;
+    }
+    .txt{
+      top:0.5em;
+      right: 3.5em;
+    }
+    .sidebarFooter{
+      width:23em
+    }
+    }

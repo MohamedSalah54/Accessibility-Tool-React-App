@@ -1,0 +1,61 @@
+
+/* في index.css أو أي ملف CSS آخر */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+body{
+    background-color: darkslategrey; 
+     font-family: 'Courier Prime', monospace;
+
+}
+.slider-container {
+  margin-top: 3em;
+  width: 100%; /* Full width */
+  overflow: hidden; /* Hide overflow */
+  position: relative;
+}
+
+.slider {
+  background-color: white;
+  display: flex; /* Use flexbox to align slides side by side */
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+
+.slide {
+  height: 300px; /* Each slide takes up full width */
+  width: 33.33%; /* Ensure 3 slides fit within the container */
+  transition: opacity 0.5s ease; /* Smooth opacity change */
+}
+
+img {
+  width: 100%; /* Make image fill the slide */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.slide-0 {
+  transform: translateX(0%);
+}
+
+.slide-1 {
+  transform: translateX(-100%);
+}
+
+.slide-2 {
+  transform: translateX(-200%);
+}
+
+.slide-3 {
+  transform: translateX(-300%);
+}
+
+.slide-4 {
+  transform: translateX(-400%);
+}
+
+.slide-5 {
+  transform: translateX(-500%);
+}
+
+  
+
+
+

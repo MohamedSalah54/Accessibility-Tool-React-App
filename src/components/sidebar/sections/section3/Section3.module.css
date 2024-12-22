@@ -1,0 +1,226 @@
+.dropdown_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  
+  
+  .drop_btn1 {
+    border: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .drop_icon {
+    font-size: 20px;
+  }
+  
+  /* عندما تكون اللغة عربية */
+  .arabic .drop_btn1 {
+    flex-direction: row-reverse; /* تغيير الترتيب ليكون الزر أولاً ثم الأيقونة */
+  }
+  
+  .arabic .dropdown {
+    order: 2; /* الزر يأتي أولاً */
+  }
+  
+  .arabic .drop_icon {
+    order: 1; /* الأيقونة تأتي بعد الزر */
+  }
+  
+  .card_container_sec_line {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 3em;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .card_sec_line {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .sec_line_p {
+    margin-left: 10px;
+  }
+  
+  .hover_text {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card_sec_line:hover .hover_text {
+    display: block;
+    opacity: 1;
+  }
+  
+  .card_sec_line:hover svg {
+    opacity: 0;
+  }
+  
+  .card_sec_line svg {
+    transition: opacity 0.1s ease-in-out;
+  }
+  
+  .card_sec_line {
+    width: 150px;
+    height: 120px; 
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card_sec_line:hover {
+    background-color: #808080;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sec_line_icon {
+    width: 50px; 
+    height: 50px; 
+    object-fit: contain; 
+    margin-bottom: 10px;
+  }
+  
+  
+  .sec_line_p {
+    transition: opacity 0.3s ease; 
+    font-size: 12px;
+  }
+  
+  .card_sec_line:hover .sec_line_icon,
+  .card_sec_line:hover .sec_line_p {
+    opacity: 0; 
+  }
+  
+  
+  .hover_text {
+    position: absolute;
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    padding: 5px;
+  }
+  
+  .card_sec_line:hover .hover_text {
+    opacity: 1; 
+  }
+  
+  .card_sec_line.active {
+    border: 2px solid #4caf50; /* لون البوردر عند التحديد */
+    position: relative;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 18px;
+    color: #4caf50; /* لون علامة الصح */
+    font-weight: bold;
+  }
+
+  .color_container {
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .wide_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .custom_color_container {
+    width: 100%;
+    display: flex;
+  }
+  
+  .custom_color_icon {
+    width: 30px;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+  
+  .custom_color_title  {
+   display: flex;
+   flex-direction: column;
+  }
+  
+  .custom_color_title h4 {
+    margin: 5px;
+    padding-right:20px ;
+  
+  }
+  .p_color {
+    margin: 0;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #555;
+  
+  }
+  
+  .custom_color_title h4 ,
+  .custom_color_title .p_color{
+    cursor:default;
+  }
+  
+  .color_btn {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px; 
+  }
+  
+
+  .color_btn button:hover{
+    background-color:  #555;;
+    color: white;
+  
+  }
+  .color_btn button {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 2px 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* CSS */
+.activeButton {
+  background-color: green;
+  color: white;  /* تغيير النص للون الأبيض */
+}

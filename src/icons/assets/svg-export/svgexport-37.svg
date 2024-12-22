@@ -1,0 +1,15 @@
+<svg class="INDmenu-accordCircle" width="160" height="160" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="#17384C" stroke-width="1" fill="#17384C" fill-rule="evenodd">
+        <g transform="translate(10.000000, 10.000000)" stroke="#17384C" fill="#17384C">
+            <ellipse cx="68.5561656" cy="69.3913043" rx="68.5561656" ry="69.3913043" stroke="#17384C" fill="#17384C"></ellipse>
+            <g transform="translate(38.391453, 38.859130)" stroke-linecap="round" stroke-linejoin="round" stroke-width="10.9565px" stroke="#FFFFFF" fill="#17384C">
+                <path d="M2.74224662,30.5321739 L55.0754362,30.5321739" stroke="#FFFFFF" fill="#17384C" stroke-width="10.9565px"></path>
+                <path d="" transform="translate(34.695652, -1.826087) rotate(90.000000) translate(-34.695652, 1.826087) " stroke="#FFFFFF" fill="#17384C" stroke-width="10.9565px"></path>
+            </g>
+            <g class="INDmenu-accordCircle-expanded" transform="translate(68.556166, 69.391304) rotate(90.000000) translate(-68.556166, -69.391304) translate(38.391453, 38.859130)" stroke-linecap="round" stroke-linejoin="round" stroke-width="10.9565px" stroke="#FFFFFF" fill="#17384C">
+                <path d="M2.74224662,30.5321739 L55.0754362,30.5321739" stroke="#FFFFFF" fill="#17384C" stroke-width="10.9565px"></path>
+                <path d="" transform="translate(34.695652, -1.826087) rotate(90.000000) translate(-34.695652, 1.826087) " stroke="#FFFFFF" fill="#17384C" stroke-width="10.9565px"></path>
+            </g>
+        </g>
+    </g>
+</svg>
