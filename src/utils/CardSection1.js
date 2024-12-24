@@ -86,7 +86,9 @@ const CardSection1 = () => {
         const savedCards = localStorage.getItem("selectedCards");
         return savedCards ? JSON.parse(savedCards) : {};
     });
-   
+
+
+
 
     const sections = [
         {
@@ -214,147 +216,164 @@ const CardSection1 = () => {
     };
 
     const handleToggle = (sectionId, state) => {
-      const section = sections.find(s => s.id === sectionId);
-      const onButton = document.getElementById(`${sectionId}-on`); // زر ON
-      const offButton = document.getElementById(`${sectionId}-off`); // زر OFF
-  
-      // تعيين الخلفية واللون للزر بناءً على الحالة
-      let onButtonStyle = {
-          backgroundColor: state === 'ON' ? 'green' : 'white',
+        const section = sections.find(s => s.id === sectionId);
+        const onButton = document.getElementById(`${sectionId}-on`); // زر ON
+        const offButton = document.getElementById(`${sectionId}-off`); // زر OFF
+        const sectionCard = document.getElementById(`${sectionId}-card`); // الكارت الذي يحتوي على المود
+        
+        // حفظ الحالة في localStorage
+        localStorage.setItem(sectionId, state);
+      
+        // تعيين الخلفية واللون للزر بناءً على الحالة
+        let onButtonStyle = {
+          backgroundColor: state === 'ON' ? 'gray' : 'white',
           color: 'black',
-      };
-      let offButtonStyle = {
-          backgroundColor: state === 'OFF' ? 'green' : 'white',
+        };
+        let offButtonStyle = {
+          backgroundColor: state === 'OFF' ? 'gray' : 'white',
           color: 'black',
-      };
-  
-      // تحديث أنماط الأزرار
-      if (onButton) {
+        };
+      
+        // تحديث أنماط الأزرار
+        if (onButton) {
           onButton.style.backgroundColor = onButtonStyle.backgroundColor;
           onButton.style.color = onButtonStyle.color;
-      }
-      if (offButton) {
+        }
+        if (offButton) {
           offButton.style.backgroundColor = offButtonStyle.backgroundColor;
           offButton.style.color = offButtonStyle.color;
-      }
-  
-      // تنفيذ التأثيرات بناءً على المود
-      if (state === 'ON') {
+        }
+      
+        // إضافة أو إزالة علامة صح داخل الكارت
+        if (sectionCard) {
+          if (state === 'ON') {
+            sectionCard.classList.add('checked');
+          } else {
+            sectionCard.classList.remove('checked');
+          }
+        }
+      
+        // تنفيذ التأثيرات بناءً على المود
+        if (state === 'ON') {
           // إضافة المودات عند تفعيل "ON"
           if (section.title === t("Blindness")) {
-              toggleScreenReader(true);
+            toggleScreenReader(true);
           }
-  
+      
           if (section.title === t("MotorSkillsDisorders")) {
-              toggleVoiceCommands(true);
-              toggleKeyboardNavigation(true);
+            toggleVoiceCommands(true);
+            toggleKeyboardNavigation(true);
           }
-  
+      
           if (section.title === t("ColorBar")) {
-              toggleDarkMode(true);
+            toggleDarkMode(true);
           }
-  
+      
           if (section.title === t("VisuallyImpaired")) {
-              toggleScreenReader(true);
-              toggleDarkMode(true);
-              toggleTooltipMode(true);
-              toggleMagnifier(true);
-              toggleReadableFont(true);
-              toggleHighlightHeaders(true);
-              toggleHighlightLinks(true);
-              toggleTextMagnifier(true);
+            toggleScreenReader(true);
+            toggleDarkMode(true);
+            toggleTooltipMode(true);
+            toggleMagnifier(true);
+            toggleReadableFont(true);
+            toggleHighlightHeaders(true);
+            toggleHighlightLinks(true);
+            toggleTextMagnifier(true);
           }
-  
+      
           if (section.title === t("Epilepsy")) {
-              toggleDisableEffects(true);
-              toggleLowSaturation(true);
-              handleMuteClick(true);
+            toggleDisableEffects(true);
+            toggleLowSaturation(true);
+            handleMuteClick(true);
           }
-  
+      
           if (section.title === t("ADHD")) {
-              toggleReadFocusMode(true);
-              toggleTooltipMode(true);
-              toggleReadingGuideMode(true);
-              handleMuteClick(true);
+            toggleReadFocusMode(true);
+            toggleTooltipMode(true);
+            toggleReadingGuideMode(true);
+            handleMuteClick(true);
           }
-  
+      
           if (section.title === t("Learning")) {
-              toggleReadingGuideMode(true);
-              toggleHighlightHeaders(true);
-              toggleHighlightLinks(true);
+            toggleReadingGuideMode(true);
+            toggleHighlightHeaders(true);
+            toggleHighlightLinks(true);
           }
-  
+      
           if (section.title === t("Elder")) {
-              toggleMode(true);
-              toggleTextMagnifier(true);
-              toggleMagnifier(true);
-              toggleReadFocusMode(true);
-              toggleReadingGuideMode(true);
+            toggleMode(true);
+            toggleTextMagnifier(true);
+            toggleMagnifier(true);
+            toggleReadFocusMode(true);
+            toggleReadingGuideMode(true);
           }
-  
+      
           if (section.title === t("Dyslexia")) {
-              toggleTooltipMode(true);
-              toggleReadingGuideMode(true);
+            toggleTooltipMode(true);
+            toggleReadingGuideMode(true);
           }
-      } else if (state === 'OFF') {
+        } else if (state === 'OFF') {
           // إلغاء المودات عند تفعيل "OFF"
           if (section.title === t("Blindness")) {
-              toggleScreenReader(false);
+            toggleScreenReader(false);
           }
-  
+      
           if (section.title === t("MotorSkillsDisorders")) {
-              toggleVoiceCommands(false);
-              toggleKeyboardNavigation(false);
+            toggleVoiceCommands(false);
+            toggleKeyboardNavigation(false);
           }
-  
+      
           if (section.title === t("ColorBar")) {
-              toggleDarkMode(false);
+            toggleDarkMode(false);
           }
-  
+      
           if (section.title === t("VisuallyImpaired")) {
-              toggleScreenReader(false);
-              toggleDarkMode(false);
-              toggleTooltipMode(false);
-              toggleMagnifier(false);
-              toggleReadableFont(false);
-              toggleHighlightHeaders(false);
-              toggleHighlightLinks(false);
-              toggleTextMagnifier(false);
+            toggleScreenReader(false);
+            toggleDarkMode(false);
+            toggleTooltipMode(false);
+            toggleMagnifier(false);
+            toggleReadableFont(false);
+            toggleHighlightHeaders(false);
+            toggleHighlightLinks(false);
+            toggleTextMagnifier(false);
           }
-  
+      
           if (section.title === t("Epilepsy")) {
-              toggleDisableEffects(false);
-              toggleLowSaturation(false);
-              handleMuteClick(false);
+            toggleDisableEffects(false);
+            toggleLowSaturation(false);
+            handleMuteClick(false);
           }
-  
+      
           if (section.title === t("ADHD")) {
-              toggleReadFocusMode(false);
-              toggleTooltipMode(false);
-              toggleReadingGuideMode(false);
-              handleMuteClick(false);
+            toggleReadFocusMode(false);
+            toggleTooltipMode(false);
+            toggleReadingGuideMode(false);
+            handleMuteClick(false);
           }
-  
+      
           if (section.title === t("Learning")) {
-              toggleReadingGuideMode(false);
-              toggleHighlightHeaders(false);
-              toggleHighlightLinks(false);
+            toggleReadingGuideMode(false);
+            toggleHighlightHeaders(false);
+            toggleHighlightLinks(false);
           }
-  
+      
           if (section.title === t("Elder")) {
-              toggleMode(false);
-              toggleTextMagnifier(false);
-              toggleMagnifier(false);
-              toggleReadFocusMode(false);
-              toggleReadingGuideMode(false);
+            toggleMode(false);
+            toggleTextMagnifier(false);
+            toggleMagnifier(false);
+            toggleReadFocusMode(false);
+            toggleReadingGuideMode(false);
           }
-  
+      
           if (section.title === t("Dyslexia")) {
-              toggleTooltipMode(false);
-              toggleReadingGuideMode(false);
+            toggleTooltipMode(false);
+            toggleReadingGuideMode(false);
           }
-      }
-  };
+        }
+      };
+      
+
+      
+  
   
   return (
       <>
@@ -388,19 +407,20 @@ const CardSection1 = () => {
                               {openItems[id] && (
                                   <div className={styles.card_container_sec_line}>
                                       {options.map(({ icon, label, description, onClick }, idx) => (
-                                          <div
-                                              key={idx}
-                                              className={`${styles.card_section4} ${selectedCards[id] === idx ? styles.selectedCard : ''}`}
-                                              onClick={() => { 
-                                                  onClick(); 
-                                                  handleCardClick(id, idx);
-                                              }}
-                                          >
-                                              <div className={styles.section4_icon}>{icon}</div>
-                                              <p className={styles.section4_p}>{label}</p>
-                                              <p className={styles.hover_text}>{description}</p>
-                                              {selectedCards[id] === idx && <FaCheck className={styles.checkIcon} />}
-                                          </div>
+                                    <div
+                                    key={idx}
+                                    className={`${styles.card_section4} ${selectedCards[id] === idx ? styles.selectedCard : ''}`}
+                                    onClick={() => { 
+                                        onClick(); 
+                                        handleCardClick(id, idx);
+                                    }}
+                                  >
+                                    <div className={styles.section4_icon}>{icon}</div>
+                                    <p className={styles.section4_p}>{label}</p>
+                                    <p className={styles.hover_text}>{description}</p>
+                                    {selectedCards[id] === idx && <FaCheck className={styles.checkIcon} />}
+                                  </div>
+                                  
                                       ))}
                                   </div>
                               )}

@@ -6,6 +6,25 @@
     max-width: 400px;
     margin: 0 auto;
   }
+/* أسلوب للكارت عند تفعيل المود */
+.checked {
+  position: relative;
+  padding-left: 30px; /* إعطاء المسافة لعلامة الصح */
+}
+
+/* إضافة علامة الصح داخل الكارت */
+.checked::before {
+  content: '✔'; /* رمز علامة الصح */
+  position: absolute;
+  left: 10px; /* تحديد مكان العلامة */
+  top: 50%;
+  transform: translateY(-50%); /* لضبط العلامة في المنتصف عموديًا */
+  color: green; /* اللون الأخضر لعلامة الصح */
+  font-size: 18px; /* حجم العلامة */
+}
+
+
+
 
   
   .drop_btn1 {

@@ -31,10 +31,22 @@ const Section2 = () => {
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   const handleCardClick = (key, toggleFunction) => {
-    setSelectedCards((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+    // في حالة المودات الثلاثة (keyboardNavigation، smartNavigation، screenReader)
+    if (["keyboardNavigation", "smartNavigation", "screenReader"].includes(key)) {
+      // قم بإلغاء تفعيل المودات الثلاثة الأخرى قبل تفعيل المود الحالي
+      setSelectedCards((prev) => ({
+        ...prev,
+        keyboardNavigation: false,
+        smartNavigation: false,
+        screenReader: false,
+        [key]: !prev[key],
+      }));
+    } else {
+      setSelectedCards((prev) => ({
+        ...prev,
+        [key]: !prev[key],
+      }));
+    }
     toggleFunction(); // استدعاء الدالة الفعلية هنا
   };
 
@@ -43,8 +55,8 @@ const Section2 = () => {
       <button className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDropdown}>
         {language === "ar" ? (
           <>
-        <span className={styles.dropdown}>{t("NavigationAdjustment")}</span>
-        {isOpen ? (
+            <span className={styles.dropdown}>{t("NavigationAdjustment")}</span>
+            {isOpen ? (
               <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             ) : (
               <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
@@ -57,8 +69,8 @@ const Section2 = () => {
             ) : (
               <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             )}
-        <span className={styles.dropdown}>{t("NavigationAdjustment")}</span>
-        </>
+            <span className={styles.dropdown}>{t("NavigationAdjustment")}</span>
+          </>
         )}
       </button>
       {isOpen && (
