@@ -2,13 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Sidebar from './components/sidebar/Sidebar';
-import { GlobalStateProvider4 } from './context/GlobalStateSection4';
 import { AccessibilityProvider } from './context/AccessMode';
 import { ColorProvider } from './context/ColorContext';
 import { CursorProvider } from './context/CursorContext'; // تأكد من استيراد CursorProvider
-import {  FontProvider } from './context/FontContext';
+import { FontProvider } from './context/FontContext';
 import { DarkModeProvider } from './context/DarkModeContext';
-import { BrightModeProvider} from './context/BrightModeContext'
+import { BrightModeProvider } from './context/BrightModeContext'
 import { MonochromeProvider } from './context/MonochromeContext';
 import { LowSaturationProvider } from './context/LowSaturationContext';
 import { HighSaturationProvider } from './context/HightSaturationContext';
@@ -37,15 +36,14 @@ import { TextReaderProvider } from './context/TextReaderContext';
 function App() {
 
   return (
-      <GlobalStateProvider4> 
-        <AccessibilityProvider>
-          <ColorProvider>
-            <CursorProvider> 
-              <FontProvider>
-                <DarkModeProvider>
-                  <BrightModeProvider>
-                    <MonochromeProvider>
-                     <LowSaturationProvider>
+      <AccessibilityProvider>
+        <ColorProvider>
+          <CursorProvider>
+            <FontProvider>
+              <DarkModeProvider>
+                <BrightModeProvider>
+                  <MonochromeProvider>
+                    <LowSaturationProvider>
                       <HighSaturationProvider>
                         <ContrastProvider>
                           <AudioProvider>
@@ -68,45 +66,44 @@ function App() {
                                                             <KeyboardNavigationProvider>
                                                               <SmartNavigateProvider>
                                                                 <TextReaderProvider>
-                                                                <Router>
-                                                                  <Navbar />
-                                                                  <Sidebar />
-                                                                  <Slider/>
-                                                                  <Routes>
-                                                                    <Route path="/" element={<Home />} />
-                                                                  </Routes>
-                                                                </Router>
+                                                                  <Router>
+                                                                    <Navbar />
+                                                                    <Sidebar />
+                                                                    <Slider />
+                                                                    <Routes>
+                                                                      <Route path="/" element={<Home />} />
+                                                                    </Routes>
+                                                                  </Router>
                                                                 </TextReaderProvider>
-                                                                </SmartNavigateProvider>
-                                                      </KeyboardNavigationProvider>
-                                                      </ScreenReaderProvider>
-                                                      </AddCaptionProvider>
+                                                              </SmartNavigateProvider>
+                                                            </KeyboardNavigationProvider>
+                                                          </ScreenReaderProvider>
+                                                        </AddCaptionProvider>
                                                       </ImageDescriptionProvider>
-                                                      </PagePreviewProvider>
-                                                      </BlinksBlockingProvider>
-                                                      </VoiceCommandsProvider>
+                                                    </PagePreviewProvider>
+                                                  </BlinksBlockingProvider>
+                                                </VoiceCommandsProvider>
                                               </SidebarProvider>
-                                    </KeyboardProvider>
-                                    </ReadingGuideProvider>
-                                    </ReadFocusProvider>
-                                    </MagnifierTextProvider>
+                                            </KeyboardProvider>
+                                          </ReadingGuideProvider>
+                                        </ReadFocusProvider>
+                                      </MagnifierTextProvider>
                                     </EnlargeProvider>
-                                 </HighlightHeadersProvider>
-                               </HighlightLinksProvider>
+                                  </HighlightHeadersProvider>
+                                </HighlightLinksProvider>
                               </ReadableFontProvider>
                             </MagnifierProvider>
                           </AudioProvider>
                         </ContrastProvider>
                       </HighSaturationProvider>
-                   </LowSaturationProvider>
+                    </LowSaturationProvider>
                   </MonochromeProvider>
-                 </BrightModeProvider>
-                </DarkModeProvider>
-              </FontProvider>
-            </CursorProvider>
-          </ColorProvider>
-        </AccessibilityProvider>
-      </GlobalStateProvider4>
+                </BrightModeProvider>
+              </DarkModeProvider>
+            </FontProvider>
+          </CursorProvider>
+        </ColorProvider>
+      </AccessibilityProvider>
   );
 }
 

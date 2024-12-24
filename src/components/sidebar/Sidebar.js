@@ -1,4 +1,4 @@
-import { useContext, useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { FaArrowsAlt } from "react-icons/fa";
 import { ReactComponent as Navside } from "../../icons/assets/svg-export/svgexport-3.svg";
 import { ReactComponent as Logo } from "../../icons/assets/icons-svg/logo.svg";
@@ -15,14 +15,43 @@ import AccessabilityState from "../footer/AccessabilityState";
 import Sendfeedback from "../footer/Sendfeedback";
 import AccessabilityWidget from "../footer/AccessibilityWidget";
 import styles from './AccessibilitySidebar.module.css'
-import DarkModeContext from "../../context/DarkModeContext";
+import { DarkModeProvider } from "../../context/DarkModeContext";
 import i18n from '../../context/i18n'; // استيراد i18n من الملف الذي يحتوي على الإعدادات
 import { useTranslation } from "react-i18next";
+import { AccessibilityProvider } from "../../context/AccessMode";
+import { ColorProvider } from "../../context/ColorContext";
+import { CursorProvider } from "../../context/CursorContext";
+import { FontProvider } from "../../context/FontContext";
+import { BrightModeProvider } from "../../context/BrightModeContext";
+import { MonochromeProvider } from "../../context/MonochromeContext";
+import { LowSaturationProvider } from "../../context/LowSaturationContext";
+import { HighSaturationProvider } from "../../context/HightSaturationContext";
+import { ContrastProvider } from "../../context/ContrastContext";
+import { AudioProvider } from "../../context/MuteMediaContext";
+import { MagnifierProvider } from "../../context/MagnifierContext";
+import { ReadableFontProvider } from "../../context/ReadableContext";
+import { HighlightLinksProvider } from "../../context/HighlightLinksContext";
+import { HighlightHeadersProvider } from "../../context/HighlightHeadersContext";
+import { EnlargeProvider } from "../../context/EnlargeContext";
+import { MagnifierTextProvider } from "../../context/MagnifierText";
+import { ReadFocusProvider } from "../../context/ReadFocusContext";
+import { ReadingGuideProvider } from "../../context/ReadGuideContext";
+import { KeyboardProvider } from "../../context/VertualKeyboardContext";
+import { SidebarProvider } from "../../context/PageStructureContext";
+import { VoiceCommandsProvider } from "../../context/VoiceCommandsContext";
+import { BlinksBlockingProvider } from "../../context/BlinksBlockingContext";
+import { PagePreviewProvider } from "../../context/PageViewContext";
+import { ImageDescriptionProvider } from "../../context/ImageDescriptionContext";
+import { AddCaptionProvider } from "../../context/AddCaptionContext";
+import { ScreenReaderProvider } from "../../context/ScreenReaderContext";
+import { KeyboardNavigationProvider } from "../../context/keyboardNavigationContext";
+import { SmartNavigateProvider } from "../../context/SmartNavigateContext";
+import { TextReaderProvider } from "../../context/TextReaderContext";
+import MainContextProvider1 from "../../context/MainContextProvider1";
 
 
 const AccessibilitySidebar = () => {
-  const{t} = useTranslation()
-  const {toggleDarkMode} = useContext(DarkModeContext)
+  const { t } = useTranslation()
   // القيم الافتراضية
   const defaultState = {
     isOpen: false,
@@ -58,7 +87,7 @@ const AccessibilitySidebar = () => {
   const resetToDefault = () => {
     // مسح جميع البيانات من localStorage
     localStorage.clear();
-  
+
     // عمل رفريش للصفحة
     window.location.reload();
   };
@@ -74,23 +103,23 @@ const AccessibilitySidebar = () => {
     setIsCardVisible(false); // إخفاء البطاقة عند الضغط على "Close"
   };
 
-  const showFeedback = () =>{
+  const showFeedback = () => {
     setIsFeedbackVisable(true)
     setIsOpen(false)
   }
 
-  const closeFeedback = () =>{
+  const closeFeedback = () => {
     setIsFeedbackVisable(false)
   }
 
   /** Accessibility Wedget */
 
-  const showWidget = () =>{
+  const showWidget = () => {
     setIsWidgetVisable(true)
     setIsOpen(false)
   }
 
-  const closeWidget = () =>{
+  const closeWidget = () => {
     setIsWidgetVisable(false)
   }
 
@@ -104,16 +133,16 @@ const AccessibilitySidebar = () => {
       {isWidgetVisable && <AccessabilityWidget closeWidget={closeWidget} />}
 
 
-      {!isOpen && !isCardVisible &&!isFeedbackVisable && (
+      {!isOpen && !isCardVisible && !isFeedbackVisable && (
         <button
-        onClick={toggleSidebar}
-        className={`${styles.toggleBtn} ${language === "ar" ? styles.arabic : ""}`}  // إضافة الكلاس حسب اللغة
-        onMouseEnter={() => setIconVisible(true)}
-        onMouseLeave={() => setIconVisible(false)}
-      >
-        <Logo />
-        {iconVisible && <FaArrowsAlt className={styles.selector} />}
-      </button>
+          onClick={toggleSidebar}
+          className={`${styles.toggleBtn} ${language === "ar" ? styles.arabic : ""}`}  // إضافة الكلاس حسب اللغة
+          onMouseEnter={() => setIconVisible(true)}
+          onMouseLeave={() => setIconVisible(false)}
+        >
+          <Logo />
+          {iconVisible && <FaArrowsAlt className={styles.selector} />}
+        </button>
       )}
 
       {/* الشريط الجانبي */}
@@ -126,7 +155,7 @@ const AccessibilitySidebar = () => {
 
           <h2 className={`${styles.txt} ${expanded ? styles.expandedTxt : ""} ${language === "ar" ? styles.arabicTxt : ""}`}>{t("Accessibility")}</h2>
           <div className={styles.languageSelector}>
-          <select
+            <select
               className={`${styles.opt} ${expanded ? styles.expandedOpt : ""} ${language === "ar" ? styles.arabicOpt : ""}`}
               value={language}
               onChange={(e) => setLanguage(e.target.value)} // تغيير اللغة
@@ -135,34 +164,41 @@ const AccessibilitySidebar = () => {
               <option value="en">English</option>
             </select>
           </div>
-            <LogoSide className={`${styles.logoSide} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDarkMode} />
-            <FaArrowsAltH className={`${styles.arr} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Arrow icon" onClick={toggleExpand} />
-            <FiEyeOff className={`${styles.eyeOff } ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Eye off icon"onClick={showWidget} />
+          <LogoSide className={`${styles.logoSide} ${language === "ar" ? styles.arabic : ""}`} />
+          <FaArrowsAltH className={`${styles.arr} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Arrow icon" onClick={toggleExpand} />
+          <FiEyeOff className={`${styles.eyeOff} ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Eye off icon" onClick={showWidget} />
         </div>
 
         <div className={styles.sidebarBody}>
-          <Section0/>
+          <Section0 />
+            <MainContextProvider1>
           <Section1 />
+          </MainContextProvider1>
+
           <Section2 />
+
           <Section3 />
+
           <Section4 />
+
+
         </div>
         <div className={`${styles.sidebarFooter} ${expanded ? styles.expanded : ""}`}>
-        <div className={`${styles.accessFotter} ${language === "ar" ? styles.arabic : ""}`}>
-          <button data-tooltip="Click to turn off accessibility" onClick={resetToDefault}>
-            {t("TurnOff")}
-          </button>
-          <button data-tooltip="View the accessibility statement" onClick={showCard}>
-            {t("AccessibilityStatement")}
-          </button>
-          <button data-tooltip="Send us your feedback" onClick={showFeedback}>
-            {t("SendFeedback")}
-          </button>
-        </div>
+          <div className={`${styles.accessFotter} ${language === "ar" ? styles.arabic : ""}`}>
+            <button data-tooltip="Click to turn off accessibility" onClick={resetToDefault}>
+              {t("TurnOff")}
+            </button>
+            <button data-tooltip="View the accessibility statement" onClick={showCard}>
+              {t("AccessibilityStatement")}
+            </button>
+            <button data-tooltip="Send us your feedback" onClick={showFeedback}>
+              {t("SendFeedback")}
+            </button>
+          </div>
 
           <div className={styles.copyrightFooter}>
             <span>
-             {t("PoweredBy")} <Link to="/" className={styles.equal}>EqualWeb</Link>
+              {t("PoweredBy")} <Link to="/" className={styles.equal}>EqualWeb</Link>
             </span>
           </div>
         </div>

@@ -50,6 +50,7 @@ import { useImageDescription } from "../context/ImageDescriptionContext";
 import { useTextReader } from "../context/TextReaderContext";
 import { FaCheck } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useBlinksBlocking } from "../context/BlinksBlockingContext";
 
 const CardSection1 = () => {
     const {t} = useTranslation()
@@ -74,10 +75,12 @@ const CardSection1 = () => {
     const {toggleVoiceCommands} = useVoiceCommandsContext()
     const {toggleTooltipMode} = useImageDescription()
     const {toggleScreenReader} = useScreenReader()
+    const {toggleDisableEffects} = useBlinksBlocking()
     const {toggleMode} = useTextReader()
     const [isOpen, setIsOpen] = useState(true);
     const [openItems, setOpenItems] = useState({});
     const [activeButtons, setActiveButtons] = useState({});
+    const [activeState, setActiveState] = useState({});
     const [selectedCards, setSelectedCards] = useState(() => {
         // استرجاع الحالة المبدئية من localStorage
         const savedCards = localStorage.getItem("selectedCards");
@@ -141,7 +144,7 @@ const CardSection1 = () => {
           id: 4,
           title: t("Epilepsy"),
           options: [
-            { icon: <Blinks />, label: t("BlinksBlocking"), description: t("BlinksBlockingDes"), onClick: toggleSidebarMode },
+            { icon: <Blinks />, label: t("BlinksBlocking"), description: t("BlinksBlockingDes"), onClick: toggleDisableEffects },
             { icon: <LowSaturation />, label: t("LowSaturation"), description: t("LowSaturationDes"), onClick: toggleLowSaturation },
             { icon: <Mute />, label: t("MuteMedia"), description: t("MuteMediaDes"), onClick: handleMuteClick },
           ],
@@ -192,8 +195,7 @@ const CardSection1 = () => {
       ];
       
 
-
-    const toggleItem = (index) => {
+      const toggleItem = (index) => {
         setOpenItems((prev) => ({
             ...prev,
             [index]: !prev[index],
@@ -206,69 +208,210 @@ const CardSection1 = () => {
                 ...prev,
                 [sectionId]: prev[sectionId] === cardIndex ? null : cardIndex,
             };
-            // تحديث localStorage
             localStorage.setItem("selectedCards", JSON.stringify(updatedCards));
             return updatedCards;
         });
     };
 
+    const handleToggle = (sectionId, state) => {
+      const section = sections.find(s => s.id === sectionId);
+      const onButton = document.getElementById(`${sectionId}-on`); // زر ON
+      const offButton = document.getElementById(`${sectionId}-off`); // زر OFF
+  
+      // تعيين الخلفية واللون للزر بناءً على الحالة
+      let onButtonStyle = {
+          backgroundColor: state === 'ON' ? 'green' : 'white',
+          color: 'black',
+      };
+      let offButtonStyle = {
+          backgroundColor: state === 'OFF' ? 'green' : 'white',
+          color: 'black',
+      };
+  
+      // تحديث أنماط الأزرار
+      if (onButton) {
+          onButton.style.backgroundColor = onButtonStyle.backgroundColor;
+          onButton.style.color = onButtonStyle.color;
+      }
+      if (offButton) {
+          offButton.style.backgroundColor = offButtonStyle.backgroundColor;
+          offButton.style.color = offButtonStyle.color;
+      }
+  
+      // تنفيذ التأثيرات بناءً على المود
+      if (state === 'ON') {
+          // إضافة المودات عند تفعيل "ON"
+          if (section.title === t("Blindness")) {
+              toggleScreenReader(true);
+          }
+  
+          if (section.title === t("MotorSkillsDisorders")) {
+              toggleVoiceCommands(true);
+              toggleKeyboardNavigation(true);
+          }
+  
+          if (section.title === t("ColorBar")) {
+              toggleDarkMode(true);
+          }
+  
+          if (section.title === t("VisuallyImpaired")) {
+              toggleScreenReader(true);
+              toggleDarkMode(true);
+              toggleTooltipMode(true);
+              toggleMagnifier(true);
+              toggleReadableFont(true);
+              toggleHighlightHeaders(true);
+              toggleHighlightLinks(true);
+              toggleTextMagnifier(true);
+          }
+  
+          if (section.title === t("Epilepsy")) {
+              toggleDisableEffects(true);
+              toggleLowSaturation(true);
+              handleMuteClick(true);
+          }
+  
+          if (section.title === t("ADHD")) {
+              toggleReadFocusMode(true);
+              toggleTooltipMode(true);
+              toggleReadingGuideMode(true);
+              handleMuteClick(true);
+          }
+  
+          if (section.title === t("Learning")) {
+              toggleReadingGuideMode(true);
+              toggleHighlightHeaders(true);
+              toggleHighlightLinks(true);
+          }
+  
+          if (section.title === t("Elder")) {
+              toggleMode(true);
+              toggleTextMagnifier(true);
+              toggleMagnifier(true);
+              toggleReadFocusMode(true);
+              toggleReadingGuideMode(true);
+          }
+  
+          if (section.title === t("Dyslexia")) {
+              toggleTooltipMode(true);
+              toggleReadingGuideMode(true);
+          }
+      } else if (state === 'OFF') {
+          // إلغاء المودات عند تفعيل "OFF"
+          if (section.title === t("Blindness")) {
+              toggleScreenReader(false);
+          }
+  
+          if (section.title === t("MotorSkillsDisorders")) {
+              toggleVoiceCommands(false);
+              toggleKeyboardNavigation(false);
+          }
+  
+          if (section.title === t("ColorBar")) {
+              toggleDarkMode(false);
+          }
+  
+          if (section.title === t("VisuallyImpaired")) {
+              toggleScreenReader(false);
+              toggleDarkMode(false);
+              toggleTooltipMode(false);
+              toggleMagnifier(false);
+              toggleReadableFont(false);
+              toggleHighlightHeaders(false);
+              toggleHighlightLinks(false);
+              toggleTextMagnifier(false);
+          }
+  
+          if (section.title === t("Epilepsy")) {
+              toggleDisableEffects(false);
+              toggleLowSaturation(false);
+              handleMuteClick(false);
+          }
+  
+          if (section.title === t("ADHD")) {
+              toggleReadFocusMode(false);
+              toggleTooltipMode(false);
+              toggleReadingGuideMode(false);
+              handleMuteClick(false);
+          }
+  
+          if (section.title === t("Learning")) {
+              toggleReadingGuideMode(false);
+              toggleHighlightHeaders(false);
+              toggleHighlightLinks(false);
+          }
+  
+          if (section.title === t("Elder")) {
+              toggleMode(false);
+              toggleTextMagnifier(false);
+              toggleMagnifier(false);
+              toggleReadFocusMode(false);
+              toggleReadingGuideMode(false);
+          }
+  
+          if (section.title === t("Dyslexia")) {
+              toggleTooltipMode(false);
+              toggleReadingGuideMode(false);
+          }
+      }
+  };
+  
+  return (
+      <>
+          <ul className={styles.dropdown_menu}>
+              {sections.map(({ id, title, options }) => (
+                  <div key={id} className={styles.first_section}>
+                      <div className={styles.body_container}>
+                          <div className={styles.first_line}>
+                              <button className={styles.bar} onClick={() => toggleItem(id)}>
+                                  {openItems[id] ? (
+                                      <FaCircleMinus className={styles.icon_list} />
+                                  ) : (
+                                      <FaCirclePlus className={styles.icon_list} />
+                                  )}
+                                  <span>{title}</span>
+                              </button>
+                              <span className={styles.on_off}>
+                                  {["ON", "OFF"].map((state) => (
+                                      <span
+                                          key={state}
+                                          id={`${id}-${state.toLowerCase()}`} // إضافة ID لتمييز الأزرار
+                                          className={`${styles.toggle_button} ${openItems[id] ? styles.active : ""}`}
+                                          onClick={() => handleToggle(id, state)}
+                                      >
+                                          {state}
+                                      </span>
+                                  ))}
+                              </span>
+                          </div>
+                          <div className={styles.second_line}>
+                              {openItems[id] && (
+                                  <div className={styles.card_container_sec_line}>
+                                      {options.map(({ icon, label, description, onClick }, idx) => (
+                                          <div
+                                              key={idx}
+                                              className={`${styles.card_section4} ${selectedCards[id] === idx ? styles.selectedCard : ''}`}
+                                              onClick={() => { 
+                                                  onClick(); 
+                                                  handleCardClick(id, idx);
+                                              }}
+                                          >
+                                              <div className={styles.section4_icon}>{icon}</div>
+                                              <p className={styles.section4_p}>{label}</p>
+                                              <p className={styles.hover_text}>{description}</p>
+                                              {selectedCards[id] === idx && <FaCheck className={styles.checkIcon} />}
+                                          </div>
+                                      ))}
+                                  </div>
+                              )}
+                          </div>
+                      </div>
+                  </div>
+              ))}
+          </ul>
+      </>
+  );
+  
+};
 
-    return (
-        <>
-            <ul className={styles.dropdown_menu}>
-                {sections.map(({ id, title, options }) => (
-                    <div key={id} className={styles.first_section}>
-                        <div className={styles.body_container}>
-                            <div className={styles.first_line}>
-                                <button className={styles.bar} onClick={() => toggleItem(id)}>
-                                    {openItems[id] ? (
-                                        <FaCircleMinus className={styles.icon_list} />
-                                    ) : (
-                                        <FaCirclePlus className={styles.icon_list} />
-                                    )}
-                                    <span>{title}</span>
-                                </button>
-                                <span className={styles.on_off}>
-                                    {["ON", "OFF"].map((state) => (
-                                        <span
-                                            key={state}
-                                            className={`${styles.toggle_button} ${openItems[id] ? styles.active : ""}`}
-                                            onClick={() => (id, state)}
-                                        >
-                                            {state}
-                                        </span>
-                                    ))}
-                                </span>
-                            </div>
-                            <div className={styles.second_line}>
-                                {openItems[id] && (
-                                    <div className={styles.card_container_sec_line}>
-                                        {options.map(({ icon, label, description, onClick }, idx) => (
-                                            <div
-                                                key={idx}
-                                                className={`${styles.card_section4} ${
-                                                    selectedCards[id] === idx ? styles.selectedCard : ''
-                                                }`} // إضافة الكلاس عند التحديد
-                                                onClick={() => { 
-                                                    onClick(); 
-                                                    handleCardClick(id, idx); // تمرير معرف القسم والكرت المحدد
-                                                }}
-                                            >
-                                                <div className={styles.section4_icon}>{icon}</div>
-                                                <p className={styles.section4_p}>{label}</p>
-                                                <p className={styles.hover_text}>{description}</p>
-                                                {selectedCards[id] === idx && <FaCheck className={styles.checkIcon} />} {/* علامة الصح */}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </ul>
-        </>
-    );
-
-}
-export default CardSection1
+export default CardSection1;
