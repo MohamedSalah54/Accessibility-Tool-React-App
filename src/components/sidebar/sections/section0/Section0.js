@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillPlusSquare, AiFillMinusSquare } from "react-icons/ai";
 import { IoMdInformationCircleOutline } from "react-icons/io";
@@ -13,35 +13,32 @@ import styles from "./Section0.module.css";
 
 const Section0 = () => {
   const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
-
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    // تحديث اللغة في localStorage
+    localStorage.setItem("language", language);
+  }, [language]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className={styles.dropdown_container}>
-      <button className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDropdown}>
-      {language === "ar" ? (
-          <>
-        <span className={`${styles.dropdown} `}>{t("aiWidgetAssistant")}</span>
+    <div
+      className={styles.dropdown_container}
+      style={{ direction: language === "ar" ? "rtl" : "ltr" }} // تغيير اتجاه النص
+    >
+      <button
+        className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`}
+        onClick={toggleDropdown}
+      >
+        <span className={`${styles.dropdown}`}>{t("aiWidgetAssistant")}</span>
         {isOpen ? (
-              <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            ) : (
-              <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            )}
-          </>
+          <AiFillMinusSquare className={styles.drop_icon} />
         ) : (
-          <>
-            {isOpen ? (
-              <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            ) : (
-              <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            )}
-        <span className={`${styles.dropdown} `}>{t("aiWidgetAssistant")}</span>
-        </>
+          <AiFillPlusSquare className={styles.drop_icon} />
         )}
       </button>
       {isOpen && (

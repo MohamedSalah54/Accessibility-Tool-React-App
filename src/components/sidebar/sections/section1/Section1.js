@@ -16,25 +16,14 @@ const Section1 = () => {
   return (
     <div className={`${styles.dropdown_container} ${language === "ar" ? styles.arabic : ""}`}>
       <button className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDropdown}>
-        {language === "ar" ? (
-          <>
+      
             <span className={styles.dropdown}>{t("AccessibilityProfiles")}</span>
             {isOpen ? (
               <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             ) : (
               <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             )}
-          </>
-        ) : (
-          <>
-            {isOpen ? (
-              <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            ) : (
-              <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            )}
-            <span className={styles.dropdown}>{t("AccessibilityProfiles")}</span>
-          </>
-        )}
+         
       </button>
 
       {isOpen && <CardSection1 />}

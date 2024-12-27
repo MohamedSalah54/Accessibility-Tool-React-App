@@ -7,7 +7,16 @@
     margin: 0 auto;
   }
 
-  
+  /* التغيير عند التبديل إلى اللغة العربية */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+.rtl p{
+  position: relative;
+  right:1.5em;
+}
+
   
   .drop_btn1 {
     border: none;

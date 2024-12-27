@@ -5,8 +5,42 @@
     padding: 10px;
     max-width: 400px;
     margin: 0 auto;
+    overflow: hidden; /* إخفاء الـ scrollbar */
+
   }
+  /* التغيير عند التبديل إلى اللغة العربية */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+.rtl .custom_font_title h4{
+  position: relative;
+  left: 7em;
+}
   
+.rtl .custom_cursor_container h4{
+  position: relative;
+  left:4em
+}
+.rtl .slider_container{
+  position: relative;
+  right:3em;
+}
+.rtl .font_btn{
+  position: relative;
+  right:2em;
+}
+.rtl .cursor_btn{
+  position: relative;
+  right:2.5em;
+}
+.rtl .reset_btn{
+  position: relative;
+  right:7em;
+}
+.rtl .font_btn button{
+padding: 7px;
+}
   .drop_btn1 {
     border: none;
     background-color: #fff;

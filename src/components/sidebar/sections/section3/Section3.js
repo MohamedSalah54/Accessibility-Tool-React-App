@@ -87,51 +87,43 @@ const Section3 = () => {
   return (
     <div className={styles.dropdown_container}>
     <button className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDropdown}>
-      {language === "ar" ? (
-          <>
+     
       <span className={styles.dropdown}>{t("colorAdjustment")}</span>
       {isOpen ? (
               <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             ) : (
               <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             )}
-          </>
-        ) : (
-          <>
-            {isOpen ? (
-              <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            ) : (
-              <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            )}
-      <span className={styles.dropdown}>{t("colorAdjustment")}</span>
-      </>
-        )}    
+         
         </button>
-    {isOpen && (
-      <div className={styles.color_container}>
-        <div className={styles.wide_card}>
-          <div className={styles.custom_color_container}>
-            <CustomColor className={styles.custom_color_icon} />
-            <div className={styles.custom_color_title}>
-              <h4>{t("customColor")}</h4>
-              <p className={styles.p_color}>{t("customColorDescription")}</p>
-            </div>
-          </div>
-          <div className={styles.color_btn}>
-            {["Backgrounds", "Headings", "Contents"].map((section) => (
-              <button
-                key={section}
-                onClick={() => handleButtonClick(section)}
-                className={activeButton === section ? styles.activeButton : ""}
-              >
-                {t(section.toLowerCase())}
-              </button>
-            ))}
-          </div>
+        {isOpen && (
+  <div
+    className={`${styles.color_container} ${language === "ar" ? styles.rtl : ""}`}
+  >
+    <div className={styles.wide_card}>
+      <div className={styles.custom_color_container}>
+        <CustomColor className={styles.custom_color_icon} />
+        <div className={styles.custom_color_title}>
+          <h4>{t("customColor")}</h4>
+          <p className={styles.p_color}>{t("customColorDescription")}</p>
         </div>
-        <ColorBar />
       </div>
-    )}
+      <div className={styles.color_btn}>
+        {["Backgrounds", "Headings", "Contents"].map((section) => (
+          <button
+            key={section}
+            onClick={() => handleButtonClick(section)}
+            className={activeButton === section ? styles.activeButton : ""}
+          >
+            {t(section.toLowerCase())}
+          </button>
+        ))}
+      </div>
+    </div>
+    <ColorBar />
+  </div>
+)}
+
     {isOpen && (
       <div className={styles.card_container_sec_line}>
         {options.map(({ id, label, icon, description, toggleFunction }) => (

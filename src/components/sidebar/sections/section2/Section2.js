@@ -53,25 +53,14 @@ const Section2 = () => {
   return (
     <div className={styles.dropdown_container}>
       <button className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDropdown}>
-        {language === "ar" ? (
-          <>
+       
             <span className={styles.dropdown}>{t("NavigationAdjustment")}</span>
             {isOpen ? (
               <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             ) : (
               <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
             )}
-          </>
-        ) : (
-          <>
-            {isOpen ? (
-              <AiFillMinusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            ) : (
-              <AiFillPlusSquare className={`${styles.drop_icon} ${language === "ar" ? styles.arabic : ""}`} />
-            )}
-            <span className={styles.dropdown}>{t("NavigationAdjustment")}</span>
-          </>
-        )}
+         
       </button>
       {isOpen && (
         <div className={styles.card_container_sec_line}>

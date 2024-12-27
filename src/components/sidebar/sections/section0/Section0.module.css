@@ -21,14 +21,7 @@
     font-size: 16px;
     font-weight: bold;
   }
-  .dropdown_container:not(.arabic) .drop_btn1 {
-    flex-direction: row; /* الترتيب العادي */
-  }
-  
-  /* اللغة العربية: النص قبل الأيقونة */
-  .dropdown_container.arabic .drop_btn1 {
-    flex-direction: row-reverse; /* النص قبل الأيقونة */
-  }
+ 
   
   .drop_icon {
     font-size: 20px;
@@ -36,12 +29,29 @@
   
   /* عندما تكون اللغة عربية */
 
-  .arabic .dropdown {
-    order: 2; /* الزر يكون أولاً */
+   .title_Ai h2{
+    position: absolute;
+    right:3em
   }
-  
-  .arabic .drop_icon {
-    order: 1; /* الأيقونات تأتي بعد الزر */
+  .title_Ai h3{
+    position: absolute;
+    right:4em
+  }
+  .container_Four_Cards .help_Me_P{
+    position: absolute;
+    right:1em
+  }
+  .container_Four_Cards .difficulty_P{
+    position: absolute;
+    right:1em
+  }
+  .container_Four_Cards .needs_P{
+    position: absolute;
+    right:1em
+  }
+  .container_Four_Cards .challenges_P{
+    position: absolute;
+    right:1em
   }
   
 
@@ -51,6 +61,8 @@
     border:1px solid rgb(217, 206, 206);
     display: flex;
     position: relative;
+    overflow: hidden; /* إخفاء الـ scrollbar */
+
   }
   .icon_Ai{
     width: 20px;
@@ -73,13 +85,16 @@
     left: 2.5em;
     font-size: 30px;
   }
-  .title_Ai h3{
+  .title_Ai h3 {
     position: absolute;
-    top:2.5em;
-    font-weight:50;
+    top: 2.5em;
+    font-weight: 30;
     font-size: 20px;
-    left: 2.5em;
+    left: 3.5em;
+    white-space: nowrap; /* منع التفاف النص */
   }
+  
+  
   .icon_logo_side{
     width: 30px;
     height: 30px;

@@ -63,10 +63,11 @@ const AccessibilitySidebar = () => {
   useEffect(() => {
     // إذا كانت اللغة في localStorage موجودة، نقوم بتغيير اللغة في i18n
     if (language) {
-      i18n.changeLanguage(language);
-      localStorage.setItem("language", language);
+      i18n.changeLanguage(language);  // تغيير اللغة في i18n
+      localStorage.setItem("language", language); // تحديث localStorage
     }
-  }, [language]);
+  }, [language, i18n]);  // إضافة i18n كـ dependency
+  
 
   // إدارة الحالة
   const [isOpen, setIsOpen] = useState(defaultState.isOpen);
@@ -155,14 +156,20 @@ const AccessibilitySidebar = () => {
 
           <h2 className={`${styles.txt} ${expanded ? styles.expandedTxt : ""} ${language === "ar" ? styles.arabicTxt : ""}`}>{t("Accessibility")}</h2>
           <div className={styles.languageSelector}>
-            <select
-              className={`${styles.opt} ${expanded ? styles.expandedOpt : ""} ${language === "ar" ? styles.arabicOpt : ""}`}
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)} // تغيير اللغة
-            >
-              <option value="ar">اللغة العربية</option>
-              <option value="en">English</option>
-            </select>
+          <select
+           className={`${styles.opt} ${expanded ? styles.expandedOpt : ""} ${language === "ar" ? styles.arabicOpt : ""}`}
+          value={language}
+          onChange={(e) => {
+            const selectedLanguage = e.target.value;
+            setLanguage(selectedLanguage);
+            // إعادة تحميل الصفحة بعد تغيير اللغة
+            window.location.reload();
+          }}
+        >
+          <option value="ar">اللغة العربية</option>
+          <option value="en">English</option>
+        </select>
+
           </div>
           <LogoSide className={`${styles.logoSide} ${language === "ar" ? styles.arabic : ""}`} />
           <FaArrowsAltH className={`${styles.arr} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Arrow icon" onClick={toggleExpand} />
