@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
 // إنشاء Context لوضع الـ Bright Mode
 export const BrightModeContext = createContext();
@@ -28,25 +29,30 @@ export const BrightModeProvider = ({ children }) => {
       // تعيين الخلفية باللون الأبيض والنصوص باللون المحدد
       document.body.style.backgroundColor = "#ffffff";
       document.querySelectorAll("nav").forEach((el) => {
-        el.style.backgroundColor = "#fff"; // لون النص
+        if (!el.closest(`.${styles.sidebar}`)) {
+        el.style.backgroundColor = "#fff"; }
 
       });
       document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,span,a").forEach((el)=>{
-        el.style.color = "#191970"
+        if (!el.closest(`.${styles.sidebar}`)) {
+        el.style.color = "#191970"}
       })
    
     } else {
       // إعادة جميع الأنماط إلى الوضع الافتراضي
       document.body.style.removeProperty("background-color");
       document.querySelectorAll("nav").forEach((el) => {
-        el.style.backgroundColor= "black"
+        if (!el.closest(`.${styles.sidebar}`)) {
+        el.style.backgroundColor= "black"}
       });
       document.querySelectorAll("a").forEach((el) => {
-        el.style.color= "white"
+        if (!el.closest(`.${styles.sidebar}`)) {
+        el.style.color= "white"}
       });
   
       document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,span").forEach((el)=>{
-        el.style.removeProperty("color")
+        if (!el.closest(`.${styles.sidebar}`)) {
+        el.style.removeProperty("color")}
       })
 
    

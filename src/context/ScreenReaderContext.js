@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
 const ScreenReaderContext = createContext();
 
@@ -55,19 +56,25 @@ export const ScreenReaderProvider = ({ children }) => {
   // Add a border to the hovered element
   const handleMouseOver = (event) => {
     const target = event.target;
-    if (target && target.style) {
-      target.style.outline = "3px solid rgba(0, 0, 255, 1)"; // أزرق مشع قوي
-      target.style.boxShadow = "0 0 8px 2px rgba(0, 0, 255, 0.9)"; // تأثير مشع إضافي
-      target.style.transition = "outline 0.2s ease-in-out, box-shadow 0.2s ease-in-out";
+    // التحقق إذا كان العنصر داخل عنصر يحمل كلاس sidebar
+    if (!target.closest(`.${styles.sidebar}`)) { // شرط الاستثناء
+      if (target && target.style) {
+        target.style.outline = "3px solid rgba(0, 0, 255, 1)"; // أزرق مشع قوي
+        target.style.boxShadow = "0 0 8px 2px rgba(0, 0, 255, 0.9)"; // تأثير مشع إضافي
+        target.style.transition = "outline 0.2s ease-in-out, box-shadow 0.2s ease-in-out";
+      }
     }
   };
 
   // Remove the border when the mouse leaves the element
   const handleMouseOut = (event) => {
     const target = event.target;
-    if (target && target.style) {
-      target.style.outline = "none";
-      target.style.boxShadow = "none"; // إزالة التأثير المشع
+    // التحقق إذا كان العنصر داخل عنصر يحمل كلاس sidebar
+    if (!target.closest(`.${styles.sidebar}`)) { // شرط الاستثناء
+      if (target && target.style) {
+        target.style.outline = "none";
+        target.style.boxShadow = "none"; // إزالة التأثير المشع
+      }
     }
   };
 

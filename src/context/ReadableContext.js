@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
 // إنشاء Context جديد
 export const ReadableFontContext = createContext();
@@ -13,11 +14,14 @@ export const ReadableFontProvider = ({ children }) => {
   // وظيفة لتطبيق الخط sans-serif على العناصر
   const applyFontToSection = () => {
     // تغيير الخط إلى sans-serif لجميع العناصر
-    document.body.style.fontFamily = 'sans-serif';
-
+    if (!document.body.closest(`.${styles.sidebar}`)) {
+      // تغيير الخط إلى sans-serif لجميع العناصر
+      document.body.style.fontFamily = 'sans-serif';
+    }
     // تغيير الخط للعناوين والنصوص
     document.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, a, li").forEach((el) => {
-      el.style.fontFamily = 'sans-serif';
+      if (!el.closest(`.${styles.sidebar}`)) {
+      el.style.fontFamily = 'sans-serif';}
     });
   };
 
@@ -25,7 +29,8 @@ export const ReadableFontProvider = ({ children }) => {
   const removeFontFromSection = () => {
     document.body.style.fontFamily = '';
     document.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, a, li").forEach((el) => {
-      el.style.fontFamily = '';
+      if (!el.closest(`.${styles.sidebar}`)) {
+      el.style.fontFamily = '';}
     });
   };
 

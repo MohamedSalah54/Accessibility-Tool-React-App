@@ -19,6 +19,7 @@ const Navbar = () => {
       </div>
       <ul style={{
         display: 'flex',
+        gap:"5em",
         listStyleType: 'none',
         margin: 0,
         padding: 0

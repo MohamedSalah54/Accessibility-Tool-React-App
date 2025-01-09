@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css';
 
 const EnlargeContext = createContext();
 
@@ -33,12 +34,15 @@ export const EnlargeProvider = ({ children }) => {
   const updateButtonSize = (enlarged) => {
     const buttons = document.querySelectorAll('button'); // الحصول على جميع الأزرار
     buttons.forEach((button) => {
-      if (enlarged) {
-        button.style.transform = 'scale(1.5)'; // تكبير الأزرار
-      } else {
-        button.style.transform = 'scale(1)'; // الحجم العادي
+      // إذا كان الزر ليس داخل sidebar
+      if (!button.closest(`.${styles.sidebar}`)) {
+        if (enlarged) {
+          button.style.transform = 'scale(1.5)'; // تكبير الأزرار
+        } else {
+          button.style.transform = 'scale(1)'; // الحجم العادي
+        }
+        button.style.transition = 'transform 0.3s ease'; // تأثير الانتقال
       }
-      button.style.transition = 'transform 0.3s ease'; // تأثير الانتقال
     });
   };
 

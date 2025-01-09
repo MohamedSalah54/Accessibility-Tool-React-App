@@ -1,5 +1,6 @@
 // highlightLinksContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
 // إنشاء الـ Context
 const HighlightLinksContext = createContext();
@@ -28,14 +29,17 @@ export const HighlightLinksProvider = ({ children }) => {
     if (isHighlighted) {
       document.documentElement.style.setProperty('--highlight-color', 'red');
       document.querySelectorAll('a').forEach(link => {
+        if (!link.closest(`.${styles.sidebar}`)) {
         link.style.borderBottom = '2px solid red'; // إضافة خط أسفل الرابط
-        link.style.color = "red"
+        link.style.color = "red"}
       });
     } else {
       document.documentElement.style.setProperty('--highlight-color', '');
       document.querySelectorAll('a').forEach(link => {
+        if (!link.closest(`.${styles.sidebar}`)) {
+
         link.style.borderBottom = ''; // إزالة الخط من الروابط
-        link.style.color ='white'
+        link.style.color ='white'}
       });
     }
   }, [isHighlighted]);

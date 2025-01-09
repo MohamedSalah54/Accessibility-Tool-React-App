@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { useTranslation } from "react-i18next";
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css';
 
 // إنشاء الـ Context
 export const FontContext = createContext();
@@ -8,43 +8,39 @@ export const FontContext = createContext();
 export const useFontContext = () => useContext(FontContext);
 
 export const FontProvider = ({ children }) => {
-  const [fontSize, setFontSize] = useState(16);  // حجم الخط
-  const [lineSpacing, setLineSpacing] = useState(1.5); // المسافة بين الأسطر
-  const [wordSpacing, setWordSpacing] = useState("normal"); // المسافة بين الكلمات
-  const [letterSpacing, setLetterSpacing] = useState(0); // المسافة بين الحروف بالـ px
+  const [fontSizeIncrement, setFontSizeIncrement] = useState(5); // مقدار الزيادة لكل عنصر
+  const [lineSpacing, setLineSpacing] = useState(1.5); // التباعد بين الأسطر
+  const [wordSpacing, setWordSpacing] = useState("normal"); // التباعد بين الكلمات
+  const [letterSpacing, setLetterSpacing] = useState(0); // التباعد بين الحروف
+  const [defaultFontSizes, setDefaultFontSizes] = useState({}); // تخزين القيم الافتراضية
 
   const updateFont = (type, increment = true) => {
     if (typeof window !== "undefined") {
-      const step = 0.5; // مقدار الزيادة أو النقصان للمسافات
+      const step = 0.5; // مقدار الزيادة أو النقصان
       let newValue;
 
       switch (type) {
         case "fontSize":
-          newValue = increment ? fontSize + 2 : fontSize - 2;
-          newValue = Math.max(10, Math.min(30, newValue)); // الحد الأدنى والأقصى
-          setFontSize(newValue);
-          localStorage.setItem("fontSize", newValue);
+          newValue = increment ? fontSizeIncrement + 2 : fontSizeIncrement - 2;
+          setFontSizeIncrement(newValue);
           break;
 
         case "lineSpacing":
           newValue = increment ? lineSpacing + step : lineSpacing - step;
           newValue = Math.max(1.0, Math.min(2.5, newValue)); // الحد الأدنى والأقصى
           setLineSpacing(newValue);
-          localStorage.setItem("lineSpacing", newValue);
           break;
 
         case "letterSpacing":
           newValue = increment ? letterSpacing + step : letterSpacing - step;
           newValue = Math.max(0, Math.min(2, newValue)); // الحد الأدنى والأقصى
           setLetterSpacing(newValue);
-          localStorage.setItem("letterSpacing", newValue);
           break;
 
         case "wordSpacing":
-          let currentSpacing = wordSpacing === "normal" ? 0 : parseFloat(wordSpacing);  // إذا كانت القيمة "normal"، نعتبرها 0
+          let currentSpacing = wordSpacing === "normal" ? 0 : parseFloat(wordSpacing);
           newValue = increment ? currentSpacing + step : currentSpacing - step;
-          setWordSpacing(`${newValue}em`);  // تحويل القيمة إلى وحدة em
-          localStorage.setItem("wordSpacing", `${newValue}em`);
+          setWordSpacing(`${newValue}em`);
           break;
 
         default:
@@ -54,31 +50,49 @@ export const FontProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // حفظ القيم الافتراضية عند تحميل الصفحة لأول مرة
     if (typeof window !== "undefined") {
-      const savedFontSize = localStorage.getItem("fontSize");
-      const savedLineSpacing = localStorage.getItem("lineSpacing");
-      const savedWordSpacing = localStorage.getItem("wordSpacing");
-      const savedLetterSpacing = localStorage.getItem("letterSpacing");
+      const elements = document.querySelectorAll(
+        "a, span, p, label, h1, h2, h3, h4, h5, h6, div[contenteditable], li, strong, em, u, button[contenteditable]"
+      );
 
-      if (savedFontSize) setFontSize(Number(savedFontSize));
-      if (savedLineSpacing) setLineSpacing(Number(savedLineSpacing));
-      if (savedWordSpacing) setWordSpacing(savedWordSpacing);
-      if (savedLetterSpacing) setLetterSpacing(Number(savedLetterSpacing));
+      const defaultSizes = {};
+      elements.forEach((el) => {
+        const tagName = el.tagName.toLowerCase();
+        if (!defaultSizes[tagName]) {
+          defaultSizes[tagName] = window.getComputedStyle(el).fontSize; // تخزين حجم الخط الافتراضي
+        }
+      });
+
+      setDefaultFontSizes(defaultSizes);
     }
   }, []);
 
   useEffect(() => {
-    document.documentElement.style.fontSize = `${fontSize}px`;
-    document.documentElement.style.lineHeight = lineSpacing;
-    document.documentElement.style.wordSpacing = wordSpacing;
-    document.documentElement.style.letterSpacing = `${letterSpacing}px`;
-  }, [fontSize, lineSpacing, wordSpacing, letterSpacing]);
+    // تطبيق التعديلات بناءً على الزيادة
+    if (Object.keys(defaultFontSizes).length > 0) {
+      const elements = document.querySelectorAll(
+        "a, span, p, label, h1, h2, h3, h4, h5, h6, div[contenteditable], li, strong, em, u, button"
+      );
+  
+      elements.forEach((el) => {
+        if (!el.closest(`.${styles.sidebar}`)) {
+          const tagName = el.tagName.toLowerCase();
+          const defaultFontSize = parseFloat(defaultFontSizes[tagName]) || 16;
+  
+          el.style.fontSize = `${defaultFontSize + fontSizeIncrement}px`;
+          el.style.lineHeight = lineSpacing;
+          el.style.wordSpacing = wordSpacing;
+          el.style.letterSpacing = `${letterSpacing}px`;
+        }
+      });
+    }
+  }, [fontSizeIncrement, lineSpacing, wordSpacing, letterSpacing, defaultFontSizes]);
+  
 
   return (
-    <FontContext.Provider value={{ fontSize, lineSpacing, wordSpacing, letterSpacing, updateFont }}>
+    <FontContext.Provider value={{ fontSizeIncrement, lineSpacing, wordSpacing, letterSpacing, updateFont }}>
       {children}
     </FontContext.Provider>
   );
 };
-
-

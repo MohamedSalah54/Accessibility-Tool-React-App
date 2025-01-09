@@ -36,74 +36,75 @@ import { TextReaderProvider } from './context/TextReaderContext';
 function App() {
 
   return (
-      <AccessibilityProvider>
-        <ColorProvider>
-          <CursorProvider>
-            <FontProvider>
-              <DarkModeProvider>
-                <BrightModeProvider>
-                  <MonochromeProvider>
-                    <LowSaturationProvider>
-                      <HighSaturationProvider>
-                        <ContrastProvider>
-                          <AudioProvider>
-                            <MagnifierProvider>
-                              <ReadableFontProvider>
-                                <HighlightLinksProvider>
-                                  <HighlightHeadersProvider>
-                                    <EnlargeProvider>
-                                      <MagnifierTextProvider>
-                                        <ReadFocusProvider>
-                                          <ReadingGuideProvider>
-                                            <KeyboardProvider>
-                                              <SidebarProvider>
-                                                <VoiceCommandsProvider >
-                                                  <BlinksBlockingProvider>
-                                                    <PagePreviewProvider>
-                                                      <ImageDescriptionProvider>
-                                                        <AddCaptionProvider>
-                                                          <ScreenReaderProvider>
-                                                            <KeyboardNavigationProvider>
-                                                              <SmartNavigateProvider>
-                                                                <TextReaderProvider>
-                                                                  <Router>
-                                                                    <Navbar />
-                                                                    <Sidebar />
-                                                                    <Slider />
-                                                                    <Routes>
-                                                                      <Route path="/" element={<Home />} />
-                                                                    </Routes>
-                                                                  </Router>
-                                                                </TextReaderProvider>
-                                                              </SmartNavigateProvider>
-                                                            </KeyboardNavigationProvider>
-                                                          </ScreenReaderProvider>
-                                                        </AddCaptionProvider>
-                                                      </ImageDescriptionProvider>
-                                                    </PagePreviewProvider>
-                                                  </BlinksBlockingProvider>
-                                                </VoiceCommandsProvider>
-                                              </SidebarProvider>
-                                            </KeyboardProvider>
-                                          </ReadingGuideProvider>
-                                        </ReadFocusProvider>
-                                      </MagnifierTextProvider>
-                                    </EnlargeProvider>
-                                  </HighlightHeadersProvider>
-                                </HighlightLinksProvider>
-                              </ReadableFontProvider>
-                            </MagnifierProvider>
-                          </AudioProvider>
-                        </ContrastProvider>
-                      </HighSaturationProvider>
-                    </LowSaturationProvider>
-                  </MonochromeProvider>
-                </BrightModeProvider>
-              </DarkModeProvider>
-            </FontProvider>
-          </CursorProvider>
-        </ColorProvider>
-      </AccessibilityProvider>
+    <AccessibilityProvider>
+      <ColorProvider>
+        <CursorProvider>
+          <FontProvider>
+            <AudioProvider>
+              <MagnifierProvider>
+                <ReadableFontProvider>
+                  <HighlightLinksProvider>
+                    <HighlightHeadersProvider>
+                      <EnlargeProvider>
+                        <MagnifierTextProvider>
+                          <ReadFocusProvider>
+                            <ReadingGuideProvider>
+                              <KeyboardProvider>
+                                <SidebarProvider>
+                                  <VoiceCommandsProvider >
+                                    <BlinksBlockingProvider>
+                                      <PagePreviewProvider>
+                                        <ImageDescriptionProvider>
+                                          <AddCaptionProvider>
+                                            <ScreenReaderProvider>
+                                              <KeyboardNavigationProvider>
+                                                <SmartNavigateProvider>
+                                                  <TextReaderProvider>
+                                                    <MonochromeProvider>
+                                                      <DarkModeProvider>
+                                                        <BrightModeProvider>
+                                                          <LowSaturationProvider>
+                                                            <HighSaturationProvider>
+                                                              <ContrastProvider>
+                                                                <Router>
+                                                                  <Navbar />
+                                                                  <Sidebar />
+                                                                  <Slider />
+                                                                  <Routes>
+                                                                    <Route path="/" element={<Home />} />
+                                                                  </Routes>
+                                                                </Router>
+                                                              </ContrastProvider>
+                                                            </HighSaturationProvider>
+                                                          </LowSaturationProvider>
+                                                        </BrightModeProvider>
+                                                      </DarkModeProvider>
+                                                    </MonochromeProvider>
+                                                  </TextReaderProvider>
+                                                </SmartNavigateProvider>
+                                              </KeyboardNavigationProvider>
+                                            </ScreenReaderProvider>
+                                          </AddCaptionProvider>
+                                        </ImageDescriptionProvider>
+                                      </PagePreviewProvider>
+                                    </BlinksBlockingProvider>
+                                  </VoiceCommandsProvider>
+                                </SidebarProvider>
+                              </KeyboardProvider>
+                            </ReadingGuideProvider>
+                          </ReadFocusProvider>
+                        </MagnifierTextProvider>
+                      </EnlargeProvider>
+                    </HighlightHeadersProvider>
+                  </HighlightLinksProvider>
+                </ReadableFontProvider>
+              </MagnifierProvider>
+            </AudioProvider>
+          </FontProvider>
+        </CursorProvider>
+      </ColorProvider>
+    </AccessibilityProvider>
+
   );
 }
 

@@ -1,5 +1,6 @@
 // highlightHeadersContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
 // إنشاء الـ Context
 const HighlightHeadersContext = createContext();
@@ -31,7 +32,9 @@ export const HighlightHeadersProvider = ({ children }) => {
       for (let i = 1; i <= 6; i++) {
         const headers = document.querySelectorAll(`h${i}`);
         headers.forEach(header => {
-          header.style.borderBottom = '2px solid black';
+          if (!header.closest(`.${styles.sidebar}`)) {
+
+          header.style.borderBottom = '2px solid black';}
         });
       }
     } else {
@@ -40,7 +43,9 @@ export const HighlightHeadersProvider = ({ children }) => {
       for (let i = 1; i <= 6; i++) {
         const headers = document.querySelectorAll(`h${i}`);
         headers.forEach(header => {
-          header.style.borderBottom = '';
+          if (!header.closest(`.${styles.sidebar}`)) {
+
+          header.style.borderBottom = '';}
         });
       }
     }

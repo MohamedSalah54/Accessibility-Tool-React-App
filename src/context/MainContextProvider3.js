@@ -10,19 +10,9 @@ import { ContrastProvider } from "./ContrastContext";
 // دمج جميع الـ Contexts في `MainContextProvider3`
 export const MainContextProvider3 = ({ children }) => {
   return (
-    <MonochromeProvider>
-      <DarkModeProvider>
-        <BrightModeProvider>
-          <LowSaturationProvider>
-            <HighSaturationProvider>
-              <ContrastProvider>
+    
                 {children}
-              </ContrastProvider>
-            </HighSaturationProvider>
-          </LowSaturationProvider>
-        </BrightModeProvider>
-      </DarkModeProvider>
-    </MonochromeProvider>
+ 
   );
 };
 

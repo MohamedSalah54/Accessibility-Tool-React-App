@@ -28,7 +28,7 @@ import { LowSaturationProvider } from "../../context/LowSaturationContext";
 import { HighSaturationProvider } from "../../context/HightSaturationContext";
 import { ContrastProvider } from "../../context/ContrastContext";
 import { AudioProvider } from "../../context/MuteMediaContext";
-import { MagnifierProvider } from "../../context/MagnifierContext";
+import { MagnifierProvider, useMagnifier } from "../../context/MagnifierContext";
 import { ReadableFontProvider } from "../../context/ReadableContext";
 import { HighlightLinksProvider } from "../../context/HighlightLinksContext";
 import { HighlightHeadersProvider } from "../../context/HighlightHeadersContext";
@@ -47,8 +47,7 @@ import { ScreenReaderProvider } from "../../context/ScreenReaderContext";
 import { KeyboardNavigationProvider } from "../../context/keyboardNavigationContext";
 import { SmartNavigateProvider } from "../../context/SmartNavigateContext";
 import { TextReaderProvider } from "../../context/TextReaderContext";
-import MainContextProvider1 from "../../context/MainContextProvider1";
-
+import Section3Providers from "../../context/Sectino3Providers";
 
 const AccessibilitySidebar = () => {
   const { t } = useTranslation()
@@ -67,7 +66,7 @@ const AccessibilitySidebar = () => {
       localStorage.setItem("language", language); // تحديث localStorage
     }
   }, [language, i18n]);  // إضافة i18n كـ dependency
-  
+
 
   // إدارة الحالة
   const [isOpen, setIsOpen] = useState(defaultState.isOpen);
@@ -147,7 +146,7 @@ const AccessibilitySidebar = () => {
       )}
 
       {/* الشريط الجانبي */}
-      <div className={`${styles.sidebar} ${isOpen ? styles.open : ""} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""} `}>
+      <div className={`${styles.sidebar} ${isOpen ? styles.open : ""} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""} `} >
         <div className={styles.header}>
           <Navside className={`${styles.INDmenuHeader_bg} ${expanded ? styles.INDmenuHeader_bg_expanded : ""}`} />
           <button onClick={toggleSidebar} className={`${styles.closeBtn} ${language === "ar" ? styles.arabic : ""} ${expanded ? styles.closeBtn_expanded : ""}`}>
@@ -156,19 +155,19 @@ const AccessibilitySidebar = () => {
 
           <h2 className={`${styles.txt} ${expanded ? styles.expandedTxt : ""} ${language === "ar" ? styles.arabicTxt : ""}`}>{t("Accessibility")}</h2>
           <div className={styles.languageSelector}>
-          <select
-           className={`${styles.opt} ${expanded ? styles.expandedOpt : ""} ${language === "ar" ? styles.arabicOpt : ""}`}
-          value={language}
-          onChange={(e) => {
-            const selectedLanguage = e.target.value;
-            setLanguage(selectedLanguage);
-            // إعادة تحميل الصفحة بعد تغيير اللغة
-            window.location.reload();
-          }}
-        >
-          <option value="ar">اللغة العربية</option>
-          <option value="en">English</option>
-        </select>
+            <select
+              className={`${styles.opt} ${expanded ? styles.expandedOpt : ""} ${language === "ar" ? styles.arabicOpt : ""}`}
+              value={language}
+              onChange={(e) => {
+                const selectedLanguage = e.target.value;
+                setLanguage(selectedLanguage);
+                // إعادة تحميل الصفحة بعد تغيير اللغة
+                window.location.reload();
+              }}
+            >
+              <option value="ar">اللغة العربية</option>
+              <option value="en">English</option>
+            </select>
 
           </div>
           <LogoSide className={`${styles.logoSide} ${language === "ar" ? styles.arabic : ""}`} />
@@ -177,16 +176,13 @@ const AccessibilitySidebar = () => {
         </div>
 
         <div className={styles.sidebarBody}>
+
           <Section0 />
-            <MainContextProvider1>
           <Section1 />
-          </MainContextProvider1>
-
           <Section2 />
-
           <Section3 />
-
           <Section4 />
+
 
 
         </div>

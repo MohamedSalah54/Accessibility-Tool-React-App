@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
 // إنشاء Context
 export const ColorContext = createContext();
@@ -46,22 +47,26 @@ export const ColorProvider = ({ children }) => {
     
     // العناوين
     document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((el) => {
-      el.style.color = colorSet.Headings || "";
+      if (!el.closest(`.${styles.sidebar}`)) {
+      el.style.color = colorSet.Headings || "";}
     });
   
     // المحتوى
     document.querySelectorAll("p, span, li").forEach((el) => {
-      el.style.color = colorSet.Contents || "";
+      if (!el.closest(`.${styles.sidebar}`)) {
+      el.style.color = colorSet.Contents || "";}
     });
   
     // الروابط (a tag)
     document.querySelectorAll("a").forEach((el) => {
       // تعيين اللون إذا تم تحديده في colorSet، وإلا تعيين اللون الافتراضي (الذي هو نفس لون Navbar)
       if (colorSet.Contents) {
-        el.style.color = colorSet.Contents;
+        if (!el.closest(`.${styles.sidebar}`)) {
+        el.style.color = colorSet.Contents;}
       } else {
+        if (!el.closest(`.${styles.sidebar}`)) {
         // تعيين اللون الافتراضي الذي هو نفس اللون في Navbar (white)
-        el.style.color = "white"; // اللون الافتراضي هنا هو اللون الأبيض
+        el.style.color = "white";} // اللون الافتراضي هنا هو اللون الأبيض
       }
     });
   };
