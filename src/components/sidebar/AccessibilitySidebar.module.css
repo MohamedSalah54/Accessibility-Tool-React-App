@@ -41,11 +41,10 @@
   
   }
   
-  
   .sidebar {
     position: fixed;
     top: 0;
-    left: -450px; /* للمحتوى الإنجليزي */
+    left: -450px; 
     width: 450px;
     height: 100%;
     background-color: #fff;
@@ -61,7 +60,7 @@
   }
   .sidebar.arabic {
     left: initial;
-    right: -450px; /* وضع الشريط الجانبي في الجهة اليمنى */
+    right: -450px; 
   }
   
   .sidebar.open {

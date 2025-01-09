@@ -57,6 +57,7 @@
     gap: 3em;
     margin-top: 10px;
     flex-wrap: wrap;
+    
   }
   
   .card_sec_line {
@@ -104,6 +105,7 @@
     position: relative; 
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
   }
   
   .card_sec_line:hover {

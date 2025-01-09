@@ -15,41 +15,12 @@ import AccessabilityState from "../footer/AccessabilityState";
 import Sendfeedback from "../footer/Sendfeedback";
 import AccessabilityWidget from "../footer/AccessibilityWidget";
 import styles from './AccessibilitySidebar.module.css'
-import { DarkModeProvider } from "../../context/DarkModeContext";
+import DarkModeContext from "../../context/DarkModeContext";
 import i18n from '../../context/i18n'; // استيراد i18n من الملف الذي يحتوي على الإعدادات
 import { useTranslation } from "react-i18next";
-import { AccessibilityProvider } from "../../context/AccessMode";
-import { ColorProvider } from "../../context/ColorContext";
-import { CursorProvider } from "../../context/CursorContext";
-import { FontProvider } from "../../context/FontContext";
-import { BrightModeProvider } from "../../context/BrightModeContext";
-import { MonochromeProvider } from "../../context/MonochromeContext";
-import { LowSaturationProvider } from "../../context/LowSaturationContext";
-import { HighSaturationProvider } from "../../context/HightSaturationContext";
-import { ContrastProvider } from "../../context/ContrastContext";
-import { AudioProvider } from "../../context/MuteMediaContext";
-import { MagnifierProvider, useMagnifier } from "../../context/MagnifierContext";
-import { ReadableFontProvider } from "../../context/ReadableContext";
-import { HighlightLinksProvider } from "../../context/HighlightLinksContext";
-import { HighlightHeadersProvider } from "../../context/HighlightHeadersContext";
-import { EnlargeProvider } from "../../context/EnlargeContext";
-import { MagnifierTextProvider } from "../../context/MagnifierText";
-import { ReadFocusProvider } from "../../context/ReadFocusContext";
-import { ReadingGuideProvider } from "../../context/ReadGuideContext";
-import { KeyboardProvider } from "../../context/VertualKeyboardContext";
-import { SidebarProvider } from "../../context/PageStructureContext";
-import { VoiceCommandsProvider } from "../../context/VoiceCommandsContext";
-import { BlinksBlockingProvider } from "../../context/BlinksBlockingContext";
-import { PagePreviewProvider } from "../../context/PageViewContext";
-import { ImageDescriptionProvider } from "../../context/ImageDescriptionContext";
-import { AddCaptionProvider } from "../../context/AddCaptionContext";
-import { ScreenReaderProvider } from "../../context/ScreenReaderContext";
-import { KeyboardNavigationProvider } from "../../context/keyboardNavigationContext";
-import { SmartNavigateProvider } from "../../context/SmartNavigateContext";
-import { TextReaderProvider } from "../../context/TextReaderContext";
-import Section3Providers from "../../context/Sectino3Providers";
 
 const AccessibilitySidebar = () => {
+  const {toggleDarkMode} = useContext(DarkModeContext)
   const { t } = useTranslation()
   // القيم الافتراضية
   const defaultState = {
@@ -170,7 +141,7 @@ const AccessibilitySidebar = () => {
             </select>
 
           </div>
-          <LogoSide className={`${styles.logoSide} ${language === "ar" ? styles.arabic : ""}`} />
+          <LogoSide className={`${styles.logoSide} ${language === "ar" ? styles.arabic : ""}`} onClick={toggleDarkMode} />
           <FaArrowsAltH className={`${styles.arr} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Arrow icon" onClick={toggleExpand} />
           <FiEyeOff className={`${styles.eyeOff} ${language === "ar" ? styles.arabic : ""}`} data-tooltip="Eye off icon" onClick={showWidget} />
         </div>
