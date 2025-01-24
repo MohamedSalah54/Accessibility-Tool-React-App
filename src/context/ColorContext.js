@@ -1,10 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
-// إنشاء Context
 export const ColorContext = createContext();
 
-// إنشاء Provider
 export const ColorProvider = ({ children }) => {
   const [colors, setColors] = useState({});
   const [hue, setHue] = useState(0);
@@ -42,31 +40,25 @@ export const ColorProvider = ({ children }) => {
     applyColorToSection(updatedColors);
   };
   const applyColorToSection = (colorSet) => {
-    // الخلفية
     document.body.style.backgroundColor = colorSet.Backgrounds || "";
     
-    // العناوين
     document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((el) => {
       if (!el.closest(`.${styles.sidebar}`)) {
       el.style.color = colorSet.Headings || "";}
     });
   
-    // المحتوى
     document.querySelectorAll("p, span, li").forEach((el) => {
       if (!el.closest(`.${styles.sidebar}`)) {
       el.style.color = colorSet.Contents || "";}
     });
   
-    // الروابط (a tag)
     document.querySelectorAll("a").forEach((el) => {
-      // تعيين اللون إذا تم تحديده في colorSet، وإلا تعيين اللون الافتراضي (الذي هو نفس لون Navbar)
       if (colorSet.Contents) {
         if (!el.closest(`.${styles.sidebar}`)) {
         el.style.color = colorSet.Contents;}
       } else {
         if (!el.closest(`.${styles.sidebar}`)) {
-        // تعيين اللون الافتراضي الذي هو نفس اللون في Navbar (white)
-        el.style.color = "white";} // اللون الافتراضي هنا هو اللون الأبيض
+        el.style.color = "white";} 
       }
     });
   };
@@ -75,17 +67,14 @@ export const ColorProvider = ({ children }) => {
   
 
   const resetColors = () => {
-    // إعادة تعيين الألوان
     setColors({});
-    applyColorToSection({}); // إزالة التأثير بالكامل
+    applyColorToSection({}); 
     localStorage.removeItem("savedColors");
     localStorage.removeItem("selectedSection");
   
-    // إزالة اللون من جميع الروابط (a tags)
     document.querySelectorAll("a").forEach((el) => {
-      el.style.removeProperty("color"); // إزالة خاصية اللون
-      // تعيين اللون الافتراضي (white) عند إعادة التعيين
-      el.style.color = "white"; // اللون الافتراضي هو نفس لون Navbar
+      el.style.removeProperty("color"); 
+      el.style.color = "white"; 
     });
   };
   

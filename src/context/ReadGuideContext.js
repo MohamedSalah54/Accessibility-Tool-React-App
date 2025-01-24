@@ -21,20 +21,18 @@ export const ReadingGuideProvider = ({ children }) => {
     let guideBar;
 
     if (readingGuideMode) {
-      // إنشاء الشريط الذي يتبع الماوس
       guideBar = document.createElement("div");
       guideBar.style.position = "fixed";
       guideBar.style.pointerEvents = "none";
       guideBar.style.top = "0";
       guideBar.style.left = "0";
       guideBar.style.width = "100%";
-      guideBar.style.height = "4px"; // ارتفاع الشريط
-      guideBar.style.backgroundColor = "black"; // لون الشريط
+      guideBar.style.height = "4px"; 
+      guideBar.style.backgroundColor = "black"; 
       guideBar.style.zIndex = "1000";
-      guideBar.style.transition = "transform 0.1s linear"; // حركة سلسة
+      guideBar.style.transition = "transform 0.1s linear"; 
       document.body.appendChild(guideBar);
 
-      // تحريك الشريط مع الماوس
       const handleMouseMove = (event) => {
         const y = event.clientY;
         guideBar.style.transform = `translateY(${y}px)`;
@@ -42,7 +40,6 @@ export const ReadingGuideProvider = ({ children }) => {
 
       document.addEventListener("mousemove", handleMouseMove);
 
-      // تنظيف عند تعطيل الوضع
       return () => {
         document.body.removeChild(guideBar);
         document.removeEventListener("mousemove", handleMouseMove);

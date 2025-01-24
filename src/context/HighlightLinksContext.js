@@ -1,15 +1,11 @@
-// highlightLinksContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
-// إنشاء الـ Context
 const HighlightLinksContext = createContext();
 
-// إنشاء الـ Provider الخاص بالـ Context
 export const HighlightLinksProvider = ({ children }) => {
   const [isHighlighted, setIsHighlighted] = useState(false);
 
-  // جلب الحالة المخزنة من localStorage
   useEffect(() => {
     const savedState = localStorage.getItem('highlightLinks');
     if (savedState === 'true') {
@@ -17,20 +13,18 @@ export const HighlightLinksProvider = ({ children }) => {
     }
   }, []);
 
-  // تفعيل أو إلغاء تفعيل التحديد
   const toggleHighlightLinks = () => {
     const newState = !isHighlighted;
     setIsHighlighted(newState);
     localStorage.setItem('highlightLinks', newState.toString());
   };
 
-  // التأكد من تطبيق التحديد على جميع الروابط
   useEffect(() => {
     if (isHighlighted) {
       document.documentElement.style.setProperty('--highlight-color', 'red');
       document.querySelectorAll('a').forEach(link => {
         if (!link.closest(`.${styles.sidebar}`)) {
-        link.style.borderBottom = '2px solid red'; // إضافة خط أسفل الرابط
+        link.style.borderBottom = '2px solid red'; 
         link.style.color = "red"}
       });
     } else {
@@ -38,7 +32,7 @@ export const HighlightLinksProvider = ({ children }) => {
       document.querySelectorAll('a').forEach(link => {
         if (!link.closest(`.${styles.sidebar}`)) {
 
-        link.style.borderBottom = ''; // إزالة الخط من الروابط
+        link.style.borderBottom = ''; 
         link.style.color ='white'}
       });
     }
@@ -51,5 +45,4 @@ export const HighlightLinksProvider = ({ children }) => {
   );
 };
 
-// استخدام الـ Context في أي مكان آخر
 export const useHighlightLinks = () => useContext(HighlightLinksContext);

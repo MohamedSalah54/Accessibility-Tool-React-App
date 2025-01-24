@@ -1,11 +1,8 @@
 import React, { createContext, useState, useEffect, useContext, useRef } from "react";
 import VoiceBar from "../components/sidebar/sections/section2/VoiceCommands";
-import ReactDOM from "react-dom";
 
-// Creating the VoiceCommandsContext
 const VoiceCommandsContext = createContext();
 
-// Custom hook to use the VoiceCommandsContext
 export const useVoiceCommandsContext = () => useContext(VoiceCommandsContext);
 
 export const VoiceCommandsProvider = ({ children }) => {
@@ -17,7 +14,6 @@ export const VoiceCommandsProvider = ({ children }) => {
   const [commandLog, setCommandLog] = useState([]);
   const [isListening, setIsListening] = useState(false);
 
-  // استخدام useRef لحفظ المرجع لـ recognition
   const recognitionRef = useRef(null);
 
   useEffect(() => {
@@ -78,11 +74,11 @@ export const VoiceCommandsProvider = ({ children }) => {
     localStorage.setItem("voiceCommandsEnabled", JSON.stringify(newState));
 
     if (newState) {
-      recognitionRef.current?.start(); // استخدام recognition من ref
+      recognitionRef.current?.start(); 
       setIsListening(true);
       setCommandLog((log) => [...log, "Voice Commands started."]);
     } else {
-      recognitionRef.current?.stop(); // استخدام recognition من ref
+      recognitionRef.current?.stop();
       setIsListening(false);
       setCommandLog((log) => [...log, "Voice Commands stopped."]);
     }

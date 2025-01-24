@@ -18,8 +18,8 @@
 
 
 .toggleBtn.arabic {
-  left: initial; /* إزالة الـ left */
-  right: 20px; /* تحديد الـ right لجعل الزر في الجهة اليمنى */
+  left: initial; 
+  right: 20px; 
 }
 
   .toggleBtn svg {
@@ -69,7 +69,7 @@
   }
   
   .sidebar.expanded {
-    width: 600px; /* مثال لتوسيع الشريط */
+    width: 600px;
 
   }
   
@@ -81,12 +81,12 @@
     opacity: 1;
     width: 32.3%;
     height: 100%;
-    transition: left 0.4s ease-out, right 0.4s ease-out; /* إضافة transition لتغيير الاتجاه */
+    transition: left 0.4s ease-out, right 0.4s ease-out; 
   }
   
   .sidebar.open.arabic {
-    left: initial; /* إزالة left */
-    right: 0; /* جعل الشريط يظهر من الجهة اليمنى */
+    left: initial; 
+    right: 0; 
   }
   .sidebar.open.expanded.arabic {
     left: initial ;
@@ -96,7 +96,7 @@
   .INDmenuHeader_bg {
     position: absolute;
     height:129px;
-    transition: width 0.3s ease; /* Make transition smooth */
+    transition: width 0.3s ease; 
     width:30.7em
   }
 
@@ -173,8 +173,8 @@
     cursor: pointer;
   }
   .arabic .logoSide {
-    right: 1em; /* تغيير الاتجاه ناحية اليمين */
-    left: auto; /* إلغاء الخاصية left */
+    right: 1em; 
+    left: auto; 
   }
   
   .opt {
@@ -188,12 +188,12 @@
     color: white;
     border: none;
     border-radius: 20px;
-    transition: background-color 0.3s ease; /* إضافة تأثير الانتقال */
+    transition: background-color 0.3s ease; 
   }
   
   .opt:hover,
   .opt:focus {
-    background-color: #34495e !important; /* تغيير الخلفية أثناء المرور أو التركيز */
+    background-color: #34495e !important; 
   }
   
   .languageSelector {
@@ -221,13 +221,13 @@
   }
   
   .arabic .arr {
-    right: 3.5em; /* تحويل الأيقونة إلى اليمين */
-    left: auto; /* إلغاء الـ left */
+    right: 3.5em;
+    left: auto; 
   }
   
   .arabic .eyeOff {
-    right: 6em; /* تحويل الأيقونة إلى اليمين */
-    left: auto; /* إلغاء الـ left */
+    right: 6em; 
+    left: auto; 
   }
   
 
@@ -259,7 +259,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .accessFotter button::before {
@@ -298,14 +298,13 @@
 
 .accessFotter {
   display: flex;
-  flex-direction: row; /* ترتيب العناصر من اليسار لليمين بشكل افتراضي */
+  flex-direction: row; 
   align-items: center;
   height: 70%;
 }
 
-/* عكس ترتيب العناصر في الـ footer عند اللغة العربية */
 .arabic .accessFotter {
-  flex-direction: row-reverse; /* عكس الترتيب */
+  flex-direction: row-reverse;
 }
 
 .copyright-footer {
@@ -314,9 +313,8 @@
   width: 100%;
 }
 
-/* محاذاة النص لليمين عند اللغة العربية */
 .arabic .copyright-footer {
-  justify-content: flex-end; /* محاذاة العناصر لليمين */
+  justify-content: flex-end; 
 }
 
 .accessFotter button {
@@ -354,7 +352,7 @@
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
       }
       
       .accessFotter button::before {

@@ -1,4 +1,3 @@
-// src/data/options.js
 import { ReactComponent as Ear } from "../icons/assets/svg-export/svgexport-10.svg";
 import { ReactComponent as Keyboard } from "../icons/assets/svg-export/svgexport-12.svg";
 import { ReactComponent as Smart } from "../icons/assets/icons-svg/Smart-Navigation.svg";
@@ -9,7 +8,7 @@ export const options = [
   {
     key: "screenReader",
     icon: Ear,
-    titleKey: "screenReader.title", // استخدام المفتاح بدل النص المترجم
+    titleKey: "screenReader.title", 
     descriptionKey: "screenReader.description",
   },
   {

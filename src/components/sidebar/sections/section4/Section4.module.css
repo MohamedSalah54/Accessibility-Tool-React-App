@@ -5,10 +5,9 @@
     padding: 10px;
     max-width: 400px;
     margin: 0 auto;
-    overflow: hidden; /* إخفاء الـ scrollbar */
+    overflow: hidden; 
 
   }
-  /* التغيير عند التبديل إلى اللغة العربية */
 .rtl {
   direction: rtl;
   text-align: right;
@@ -60,17 +59,16 @@ padding: 7px;
     font-size: 20px;
   }
   
-  /* عندما تكون اللغة عربية */
   .arabic .drop_btn1 {
-    flex-direction: row-reverse; /* تغيير الترتيب ليكون الزر أولاً ثم الأيقونة */
+    flex-direction: row-reverse; 
   }
   
   .arabic .dropdown {
-    order: 2; /* الزر يأتي أولاً */
+    order: 2; 
   }
   
   .arabic .drop_icon {
-    order: 1; /* الأيقونة تأتي بعد الزر */
+    order: 1; 
   }
   
   .font_container {
@@ -132,9 +130,9 @@ padding: 7px;
   
   }
   .activeButton {
-    background-color: green; /* يمكنك تغيير اللون كما تشاء */
-    border: 1px solid #ccc; /* لتحديد الحدود بشكل واضح */
-    color: #fff; /* تغيير اللون النص */
+    background-color: green; 
+    border: 1px solid #ccc; 
+    color: #fff; 
   }
   .font_btn button:hover{
     background-color:  #555;;
@@ -221,9 +219,9 @@ padding: 7px;
   
   }
     .activeButton {
-    background-color: green; /* يمكنك تغيير اللون كما تشاء */
-    border: 1px solid #ccc; /* لتحديد الحدود بشكل واضح */
-    color: #fff; /* تغيير اللون النص */
+    background-color: green; 
+    border: 1px solid #ccc; 
+    color: #fff; 
   }
   
   .slider_container {
@@ -257,17 +255,17 @@ padding: 7px;
   }
   
   .slider_icon.left {
-    left: -15px; /* وضع الأيقونة على الجانب الأيسر */
+    left: -15px; 
   }
   
   .slider_icon.right {
-    right: -20px; /* وضع الأيقونة على الجانب الأيمن */
+    right: -20px; 
   }
 
   .card_container_section4{
     display: flex;
-    justify-content: center; /* ترتيب الكروت في المنتصف */
-    align-items: center; /* المحاذاة الرأسية */
+    justify-content: center;
+    align-items: center; 
     gap: 3em;
     margin-top: 10px;
     flex-wrap: wrap;
@@ -291,7 +289,7 @@ padding: 7px;
   }
   
   .card_section4.selected_card {
-    border: 2px solid #4caf50; /* لون البوردر عند التحديد */
+    border: 2px solid #4caf50; 
   }
   
   .check_mark {
@@ -299,7 +297,7 @@ padding: 7px;
     top: 10px;
     right: 10px;
     font-size: 16px;
-    color: #4caf50; /* لون علامة الصح */
+    color: #4caf50;
     font-weight: bold;
   }
   
@@ -310,41 +308,39 @@ padding: 7px;
   }
    
   .section4_icon {
-    width: 40px; /* العرض المطلوب للأيقونة */
-    height: 40px; /* الارتفاع المطلوب للأيقونة */
-    display: flex; /* لتفعيل flexbox */
-    align-items: center; /* محاذاة رأسية */
-    justify-content: center; /* محاذاة أفقية */
-    margin-bottom: 10px; /* مسافة بين الأيقونة والنص */
+    width: 40px;
+    height: 40px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 10px; 
   }
   
   
   .section4_p {
     font-size: 12px;
-    margin-top: 5px; /* مسافة بسيطة بين الأيقونة والنص */
+    margin-top: 5px; 
   }
   
   .card_section4:hover .section4_icon,
   .card_section4:hover .section4_p {
-    opacity: 0; /* إخفاء الأيقونة والنص الأساسي عند التمرير */
+    opacity: 0; 
   }
   
-  /* النص الذي يظهر عند التمرير */
   
   .hover_text {
     position: absolute;
     font-size: 12px;
     color: white;
     text-align: center;
-    opacity: 0; /* إخفاء النص في الحالة العادية */
-    transition: opacity 0.3s ease; /* تأثير سلس */
+    opacity: 0; 
+    transition: opacity 0.3s ease;
     padding: 5px;
   }
   
   .card_section4:hover .hover_text {
-    opacity: 1; /* إظهار النص عند التمرير */
+    opacity: 1; 
   }
   
 
-/* تغيير خلفية الزر النشط */
 

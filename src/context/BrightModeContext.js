@@ -1,14 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 import styles from '../../src/components/sidebar/AccessibilitySidebar.module.css'
 
-// إنشاء Context لوضع الـ Bright Mode
 export const BrightModeContext = createContext();
 
-// إنشاء Provider لـ Bright Mode
 export const BrightModeProvider = ({ children }) => {
   const [isBrightMode, setIsBrightMode] = useState(false);
 
-  // استرجاع الوضع المحفوظ من LocalStorage
   useEffect(() => {
     const savedMode = localStorage.getItem("brightMode");
     if (savedMode) {
@@ -16,17 +13,14 @@ export const BrightModeProvider = ({ children }) => {
     }
   }, []);
 
-  // التبديل بين وضع الـ Bright Mode و الوضع الافتراضي
   const toggleBrightMode = () => {
     const newMode = !isBrightMode;
     setIsBrightMode(newMode);
     localStorage.setItem("brightMode", newMode.toString());
   };
 
-  // تطبيق أو إزالة تأثيرات وضع الـ Bright Mode
   useEffect(() => {
     if (isBrightMode) {
-      // تعيين الخلفية باللون الأبيض والنصوص باللون المحدد
       document.body.style.backgroundColor = "#ffffff";
       document.querySelectorAll("nav").forEach((el) => {
         if (!el.closest(`.${styles.sidebar}`)) {
@@ -39,7 +33,6 @@ export const BrightModeProvider = ({ children }) => {
       })
    
     } else {
-      // إعادة جميع الأنماط إلى الوضع الافتراضي
       document.body.style.removeProperty("background-color");
       document.querySelectorAll("nav").forEach((el) => {
         if (!el.closest(`.${styles.sidebar}`)) {

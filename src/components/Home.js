@@ -1,23 +1,21 @@
 import React, { useEffect, useRef } from "react";
-import audio from "../audio/videoplayback.mp3"; // ملف الصوت
+import audio from "../audio/videoplayback.mp3"; 
 import video from '../audio/nature.mp4'
 const Home = () => {
   const audioRef = useRef(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
-    // تشغيل الصوت بشكل صامت عند تحميل الصفحة لتجاوز سياسات المتصفح
     if (audioRef.current) {
-      audioRef.current.muted = false; // تأكيد أن الصوت غير صامت
+      audioRef.current.muted = false; 
       audioRef.current.play().catch((error) => {
-        console.log("Error playing audio: ", error); // تسجيل أي خطأ
+        console.log("Error playing audio: ", error); 
       });
     }
 
-    // تشغيل الفيديو بشكل تلقائي عند تحميل الصفحة
     if (videoRef.current) {
       videoRef.current.play().catch((error) => {
-        console.log("Error playing video: ", error); // تسجيل أي خطأ
+        console.log("Error playing video: ", error); 
       });
     }
   }, []);
@@ -26,7 +24,7 @@ const Home = () => {
     container: {
       textAlign: "center",
       marginTop: "50px",
-      fontFamily: "'Roboto'", // تم تغيير الخط هنا
+      fontFamily: "'Roboto'", 
     },
     heading: {
       fontSize: "2rem",
@@ -54,7 +52,7 @@ const Home = () => {
       alignItems: "center",
       gap: "20px",
       marginTop: "30px",
-      flexWrap: "wrap", // للسماح بالتفاف العناصر في حالة ضيق المساحة
+      flexWrap: "wrap", 
     },
     audio: {
       marginTop: "20px",

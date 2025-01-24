@@ -7,7 +7,6 @@
     margin: 0 auto;
   }
 
-  /* التغيير عند التبديل إلى اللغة العربية */
 .rtl {
   direction: rtl;
   text-align: right;
@@ -37,17 +36,16 @@
     font-size: 20px;
   }
   
-  /* عندما تكون اللغة عربية */
   .arabic .drop_btn1 {
-    flex-direction: row-reverse; /* تغيير الترتيب ليكون الزر أولاً ثم الأيقونة */
+    flex-direction: row-reverse;
   }
   
   .arabic .dropdown {
-    order: 2; /* الزر يأتي أولاً */
+    order: 2;
   }
   
   .arabic .drop_icon {
-    order: 1; /* الأيقونة تأتي بعد الزر */
+    order: 1;
   }
   
   .card_container_sec_line {
@@ -148,7 +146,7 @@
   }
   
   .card_sec_line.active {
-    border: 2px solid #4caf50; /* لون البوردر عند التحديد */
+    border: 2px solid #4caf50; 
     position: relative;
   }
   
@@ -157,7 +155,7 @@
     top: 5px;
     right: 5px;
     font-size: 18px;
-    color: #4caf50; /* لون علامة الصح */
+    color: #4caf50;
     font-weight: bold;
   }
 
@@ -230,8 +228,7 @@
     transition: background-color 0.3s, color 0.3s;
   }
 
-  /* CSS */
 .activeButton {
   background-color: green;
-  color: white;  /* تغيير النص للون الأبيض */
+  color: white;
 }

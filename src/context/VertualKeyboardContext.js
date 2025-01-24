@@ -1,14 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { FaRegKeyboard } from "react-icons/fa";
 
-// إنشاء context
 export const KeyboardContext = createContext();
 
 export const KeyboardProvider = ({ children }) => {
-  // حالة وضع لوحة المفاتيح الافتراضية
   const [isKeyboardMode, setIsKeyboardMode] = useState(false);
 
-  // استرجاع الوضع من localStorage عند تحميل الصفحة
   useEffect(() => {
     const savedMode = localStorage.getItem('keyboardMode');
     if (savedMode === 'true') {
@@ -16,7 +13,6 @@ export const KeyboardProvider = ({ children }) => {
     }
   }, []);
 
-  // تغيير الحالة وتخزينها في localStorage
   const toggleKeyboardMode = () => {
     setIsKeyboardMode(prevState => {
       const newState = !prevState;
@@ -25,7 +21,6 @@ export const KeyboardProvider = ({ children }) => {
     });
   };
 
-  // مكونات Context
   return (
     <KeyboardContext.Provider value={{ isKeyboardMode, toggleKeyboardMode }}>
       {children}
@@ -42,22 +37,19 @@ const VirtualKeyboard = () => {
     }
     const [input, setInput] = useState('');
     
-    // دالة لإضافة النص عند الضغط على الأزرار
     const handleKeyPress = (key) => {
       if (key === 'del') {
-        setInput(input.slice(0, -1)); // حذف آخر حرف
+        setInput(input.slice(0, -1))
       } else {
         setInput(input + key);
       }
     };
   
-    // دالة لتبديل حالة الأحرف (Caps Lock)
     const [capsLock, setCapsLock] = useState(false);
     const toggleCapsLock = () => {
       setCapsLock(!capsLock);
     };
   
-    // الأزرار في لوحة المفاتيح
     const keys = [
       ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'del'],
       ['tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', ';'],
@@ -138,21 +130,21 @@ const VirtualKeyboard = () => {
       boxSizing: "border-box",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",  // موازنة الكيبورد عموديًا
-      zIndex: 9999,  // تحديد القيمة العالية لكي يظهر العنصر فوق أي شيء آخر
+      justifyContent: "center",  
+      zIndex: 9999,  
     },
     header: {
       textAlign: 'center',
-      fontSize: '14px',  // تصغير حجم الخط
+      fontSize: '14px', 
       marginBottom: '8px',
     },
     inputContainer: {
-      marginBottom: '5px',  // تقليل المسافة بين المدخل وبقية الأزرار
+      marginBottom: '5px',  
     },
     input: {
       width: '100%',
-      padding: '5px',  // تقليل padding
-      fontSize: '20px',  // تقليل حجم الخط
+      padding: '5px',  
+      fontSize: '20px',  
       backgroundColor: '#555',
       color: 'white',
       border: 'none',
@@ -162,7 +154,7 @@ const VirtualKeyboard = () => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      height: '100%',  // التأكد من أن الأزرار تتوزع بشكل مناسب داخل الكيبورد
+      height: '100%', 
     },
     row: {
       display: 'flex',
@@ -171,13 +163,13 @@ const VirtualKeyboard = () => {
       flexWrap: 'wrap',
     },
     key: {
-      padding: '10px 20px',  // تقليل الـ padding
-      margin: '2px',  // تقليل الـ margin
+      padding: '10px 20px',
+      margin: '2px',  
       backgroundColor: '#444',
       border: 'none',
       borderRadius: '5px',
       cursor: 'pointer',
-      fontSize: '12px',  // تصغير حجم الخط
+      fontSize: '12px',  
       color: 'white',
       transition: 'background-color 0.3s',
     },

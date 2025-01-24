@@ -1,34 +1,26 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-// إنشاء الـ Context
 const LowSaturationContext = createContext();
 
 export const LowSaturationProvider = ({ children }) => {
-  // حالة الـ Low Saturation
   const [isLowSaturation, setIsLowSaturation] = useState(() => {
-    // قراءة الحالة من Local Storage عند التحميل
     return localStorage.getItem("lowSaturationMode") === "true";
   });
 
-  // تطبيق أو إزالة التأثير
   const toggleLowSaturation = () => {
     if (isLowSaturation) {
-      // إزالة التأثير
       document.documentElement.style.filter = "";
       document.documentElement.style.transition = "";
-      localStorage.removeItem("lowSaturationMode"); // إزالة من Local Storage
+      localStorage.removeItem("lowSaturationMode"); 
     } else {
-      // تطبيق التأثير
       document.documentElement.style.filter = "saturate(0.3)";
       document.documentElement.style.transition = "filter 0.5s ease";
-      localStorage.setItem("lowSaturationMode", "true"); // تخزين في Local Storage
+      localStorage.setItem("lowSaturationMode", "true");  
     }
 
-    // تحديث الحالة
     setIsLowSaturation(!isLowSaturation);
   };
 
-  // تطبيق التأثير عند التحميل إذا كانت الحالة مفعلّة
   useEffect(() => {
     if (isLowSaturation) {
       document.documentElement.style.filter = "saturate(0.3)";
@@ -43,5 +35,4 @@ export const LowSaturationProvider = ({ children }) => {
   );
 };
 
-// Custom Hook لاستخدام الـ Context
 export const useLowSaturation = () => useContext(LowSaturationContext);

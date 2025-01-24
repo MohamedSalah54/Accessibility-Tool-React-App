@@ -10,16 +10,15 @@ import { FaVolumeXmark, FaPause } from "react-icons/fa6";
 import { AiOutlineSound } from "react-icons/ai";
 
 
-// إنشاء Context
 const TextReaderContext = createContext();
 
 export const TextReaderProvider = ({ children }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [pitch, setPitch] = useState(1);  // إضافة pitch
-  const [rate, setRate] = useState(1);    // إضافة rate
-  const [lastReadText, setLastReadText] = useState("");  // حفظ النص الأخير المقروء
+  const [pitch, setPitch] = useState(1);  
+  const [rate, setRate] = useState(1);    
+  const [lastReadText, setLastReadText] = useState(""); 
 
   useEffect(() => {
     const storedState = localStorage.getItem("textReaderMode");
@@ -29,10 +28,10 @@ export const TextReaderProvider = ({ children }) => {
       if (isEnabled && !isMuted) {
         const text = event.target.innerText;
         if (text) {
-          setLastReadText(text);  // حفظ النص الأخير
+          setLastReadText(text);  
           const utterance = new SpeechSynthesisUtterance(text);
-          utterance.pitch = pitch;  // استخدام pitch من السياق
-          utterance.rate = rate;    // استخدام rate من السياق
+          utterance.pitch = pitch;  
+          utterance.rate = rate;    
 
           utterance.onstart = () => {
             if (isPaused) speechSynthesis.pause();
@@ -77,7 +76,7 @@ export const TextReaderProvider = ({ children }) => {
   };
 
   const reloadText = () => {
-    if (lastReadText) {  // إذا كان هناك نص تم قراءته سابقاً
+    if (lastReadText) {  
       const utterance = new SpeechSynthesisUtterance(lastReadText);
       utterance.pitch = pitch;
       utterance.rate = rate;
@@ -94,11 +93,11 @@ export const TextReaderProvider = ({ children }) => {
         togglePause,
         isMuted,
         isPaused,
-        pitch,     // إضافة pitch
-        setPitch,  // إضافة setPitch لتعديل pitch
-        rate,      // إضافة rate
-        setRate,   // إضافة setRate لتعديل rate
-        reloadText,  // إضافة وظيفة إعادة قراءة النص
+        pitch,     
+        setPitch,  
+        rate,     
+        setRate,   
+        reloadText,  
       }}
     >
       {children}
@@ -107,7 +106,6 @@ export const TextReaderProvider = ({ children }) => {
   );
 };
 
-// استخدام السياق
 export const useTextReader = () => useContext(TextReaderContext);
 
 const IconBar = () => {
@@ -117,7 +115,6 @@ const IconBar = () => {
   const clickIcon = () =>{
     setisNavigateIcon((prev) =>!prev)
   }
-  // مراجع للعناصر القابلة للتحديد
   const elementsRef = useRef([]);
 
   const handlePitchChange = (value) => {
@@ -132,23 +129,21 @@ const IconBar = () => {
     setShowControls((prev) => !prev);
   };
 
-  // التنقل بين العناصر
   const handleArrowClick = (direction) => {
     const currentIndex = elementsRef.current.findIndex((el) => el === document.activeElement);
     let nextIndex = currentIndex;
     
     if (direction === "next") {
-      nextIndex = currentIndex + 1 < elementsRef.current.length ? currentIndex + 1 : 0; // الانتقال إلى العنصر التالي
+      nextIndex = currentIndex + 1 < elementsRef.current.length ? currentIndex + 1 : 0
     } else if (direction === "prev") {
-      nextIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : elementsRef.current.length - 1; // الانتقال إلى العنصر السابق
+      nextIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : elementsRef.current.length - 1
     }
 
     const nextElement = elementsRef.current[nextIndex];
     if (nextElement) {
-      nextElement.focus(); // تركيز العنصر التالي
-      nextElement.style.border = "2px dashed white"; // إضافة الحدود للعنصر
+      nextElement.focus()
+      nextElement.style.border = "2px dashed white"; 
 
-      // قراءة النص عند التركيز على العنصر
       const text = nextElement.innerText;
       if (text) {
         const utterance = new SpeechSynthesisUtterance(text);
@@ -272,14 +267,14 @@ const IconBar = () => {
 
       <button
         style={iconButtonStyle}
-        onClick={() => handleArrowClick("prev")} // للانتقال إلى العنصر السابق
+        onClick={() => handleArrowClick("prev")} 
       >
         <MdKeyboardDoubleArrowLeft style={barIcons} />
       </button>
 
       <button
         style={iconButtonStyle}
-        onClick={() => handleArrowClick("next")} // للانتقال إلى العنصر التالي
+        onClick={() => handleArrowClick("next")} 
       >
         <MdKeyboardDoubleArrowRight style={barIcons} />
       </button>

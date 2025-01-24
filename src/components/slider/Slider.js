@@ -7,7 +7,6 @@ import pic5 from "../../Images/pic5.png";
 import pic6 from "../../Images/pic6.jpg";
 
 const Slider = () => {
-  // Images array with alt descriptions
   const images = [
     { src: pic1, alt: "Beautiful landscape with mountains" },
     { src: pic2, alt: "A stunning sunset over the ocean" },
@@ -19,14 +18,12 @@ const Slider = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Function to go to the next slide
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); // Move to the next image
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); 
   };
 
-  // Auto-slide every 3 seconds
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000); // Change image every 3 seconds
+    const interval = setInterval(nextSlide, 3000); 
     return () => clearInterval(interval);
   }, []);
 
@@ -38,7 +35,7 @@ const Slider = () => {
             className="slide"
             key={index}
             src={image.src}
-            alt={image.alt} // Alt description from the object
+            alt={image.alt} 
           />
         ))}
       </div>

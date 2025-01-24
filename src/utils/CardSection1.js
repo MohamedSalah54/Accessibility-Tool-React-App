@@ -82,7 +82,6 @@ const CardSection1 = () => {
     const [activeButtons, setActiveButtons] = useState({});
     const [activeState, setActiveState] = useState({});
     const [selectedCards, setSelectedCards] = useState(() => {
-        // استرجاع الحالة المبدئية من localStorage
         const savedCards = localStorage.getItem("selectedCards");
         return savedCards ? JSON.parse(savedCards) : {};
     });
@@ -217,14 +216,12 @@ const CardSection1 = () => {
 
     const handleToggle = (sectionId, state) => {
         const section = sections.find(s => s.id === sectionId);
-        const onButton = document.getElementById(`${sectionId}-on`); // زر ON
-        const offButton = document.getElementById(`${sectionId}-off`); // زر OFF
-        const sectionCard = document.getElementById(`${sectionId}-card`); // الكارت الذي يحتوي على المود
+        const onButton = document.getElementById(`${sectionId}-on`); 
+        const offButton = document.getElementById(`${sectionId}-off`); 
+        const sectionCard = document.getElementById(`${sectionId}-card`); 
         
-        // حفظ الحالة في localStorage
         localStorage.setItem(sectionId, state);
       
-        // تعيين الخلفية واللون للزر بناءً على الحالة
         let onButtonStyle = {
           backgroundColor: state === 'ON' ? 'gray' : 'white',
           color: 'black',
@@ -234,7 +231,6 @@ const CardSection1 = () => {
           color: 'black',
         };
       
-        // تحديث أنماط الأزرار
         if (onButton) {
           onButton.style.backgroundColor = onButtonStyle.backgroundColor;
           onButton.style.color = onButtonStyle.color;
@@ -244,7 +240,6 @@ const CardSection1 = () => {
           offButton.style.color = offButtonStyle.color;
         }
       
-        // إضافة أو إزالة علامة صح داخل الكارت
         if (sectionCard) {
           if (state === 'ON') {
             sectionCard.classList.add('checked');
@@ -253,9 +248,7 @@ const CardSection1 = () => {
           }
         }
       
-        // تنفيذ التأثيرات بناءً على المود
         if (state === 'ON') {
-          // إضافة المودات عند تفعيل "ON"
           if (section.title === t("Blindness")) {
             toggleScreenReader(true);
           }
@@ -394,7 +387,7 @@ const CardSection1 = () => {
                                   {["ON", "OFF"].map((state) => (
                                       <span
                                           key={state}
-                                          id={`${id}-${state.toLowerCase()}`} // إضافة ID لتمييز الأزرار
+                                          id={`${id}-${state.toLowerCase()}`} 
                                           className={`${styles.toggle_button} ${openItems[id] ? styles.active : ""}`}
                                           onClick={() => handleToggle(id, state)}
                                       >

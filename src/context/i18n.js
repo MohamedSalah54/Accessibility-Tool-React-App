@@ -3,7 +3,6 @@ import { initReactI18next } from 'react-i18next';
 import enTranslation from '../locales/en.json';
 import arTranslation from '../locales/ar.json';
 
-// إعداد الترجمة
 i18n
   .use(initReactI18next)
   .init({
@@ -15,7 +14,7 @@ i18n
         translation: arTranslation,
       },
     },
-    lng: 'en', // اللغة الافتراضية
+    lng: 'en', 
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,

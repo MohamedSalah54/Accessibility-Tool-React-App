@@ -11,10 +11,10 @@ const Section4 = () => {
   const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
   const {t} = useTranslation()
   const { handleWhiteCursor, handleBlackCursor, resetCursor } = useContext(CursorContext);
-  const [isOpen, setIsOpen] = useState(true); // تتبع القائمة الرئيسية
-  const [selectedProperty, setSelectedProperty] = useState("fontSize"); // الخاصية المحددة (افتراضيًا هي fontSize)
-  const [activePropertyButton, setActivePropertyButton] = useState(""); // حفظ الزر النشط في قائمة الخصائص
-  const [activeCursorButton, setActiveCursorButton] = useState(""); // حفظ الزر النشط في قائمة المؤشرات
+  const [isOpen, setIsOpen] = useState(true); 
+  const [selectedProperty, setSelectedProperty] = useState("fontSize")
+  const [activePropertyButton, setActivePropertyButton] = useState("")
+  const [activeCursorButton, setActiveCursorButton] = useState("")
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -22,11 +22,11 @@ const Section4 = () => {
 
   const handlePropertyButtonClick = (property) => {
     setSelectedProperty(property);
-    setActivePropertyButton(property); // تعيين الزر النشط في الخصائص
+    setActivePropertyButton(property); 
   };
 
   const handleCursorButtonClick = (cursorType) => {
-    setActiveCursorButton(cursorType); // تعيين الزر النشط في المؤشرات
+    setActiveCursorButton(cursorType); 
   };
 
   return (

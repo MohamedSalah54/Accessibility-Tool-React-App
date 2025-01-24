@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css"
-const AccessabilityState = ({ closeCard }) => { // تمرير دالة إغلاق البطاقة من الـ parent
+const AccessabilityState = ({ closeCard }) => { 
   return (
     <div className={styles.overlay}>
       <div className={styles.card_container}>

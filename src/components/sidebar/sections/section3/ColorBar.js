@@ -12,7 +12,6 @@ const ColorBar = () => {
 
   return (
     <div style={{ margin: "20px", textAlign: "center" }}>
-      {/* شريط تمرير الألوان */}
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <input
           type="range"
@@ -22,11 +21,11 @@ const ColorBar = () => {
           onChange={handleColorChange}
           style={{
             width: "350px",
-            appearance: "none", // تعطيل الأنماط الافتراضية
-            background: "none", // استخدام الخلفية المخصصة من الشريط نفسه
+            appearance: "none", 
+            background: "none", 
             cursor: "pointer",
             outline: "none",
-            border: "none", // إزالة أي إطار داخلي
+            border: "none", 
           }}
         />
 
@@ -34,9 +33,8 @@ const ColorBar = () => {
           
 <style>
   {`
-    /* تخصيص الشريط الأساسي */
     input[type="range"]::-webkit-slider-runnable-track {
-      height: 15px; /* التحكم بارتفاع الشريط */
+      height: 15px; 
       background: linear-gradient(to right, 
         black, 
         orange, 
@@ -45,46 +43,43 @@ const ColorBar = () => {
         cyan, 
         blue, 
         violet, 
-        red); /* الخلفية الملونة */
-      border-radius: 50px; /* الحواف الدائرية */
-      border: none; /* إزالة أي إطار */
+        red); 
+      border-radius: 50px; 
+      border: none; 
     }
 
-    /* تخصيص الكرة */
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 20px; /* عرض الكرة */
-      height: 20px; /* ارتفاع الكرة */
-      background: #000; /* لون الكرة */
+      width: 20px; 
+      height: 20px; 
+      background: #000; 
       border: 2px solid #fff;
-      border-radius: 50%; /* جعل الكرة دائرية */
+      border-radius: 50%; 
       cursor: pointer;
       transition: transform 0.2s ease;
-      transform: translateY(-4px); /* رفع الكرة للأعلى */
+      transform: translateY(-4px); 
     }
 
     input[type="range"]:hover::-webkit-slider-thumb,
     input[type="range"]:active::-webkit-slider-thumb {
-      transform: translateY(-5px) scale(1.3); /* تكبير الكرة عند التفاعل مع الحفاظ على الرفع */
+      transform: translateY(-5px) scale(1.3); 
     }
 
-    /* تخصيص الكرة لمتصفحات فايرفوكس */
     input[type="range"]::-moz-range-thumb {
-      width: 20px; /* عرض الكرة */
-      height: 20px; /* ارتفاع الكرة */
-      background: #000; /* لون الكرة */
+      width: 20px; 
+      height: 20px;
+      background: #000; 
       border: 2px solid #fff;
-      border-radius: 50%; /* جعل الكرة دائرية */
+      border-radius: 50%; /
       cursor: pointer;
       transition: transform 0.2s ease;
-      transform: translateY(-5px); /* رفع الكرة للأعلى */
+      transform: translateY(-5px); 
     }
   `}
 </style>
       </div>
 
-      {/* زر لإعادة ضبط الألوان */}
       <button
       onClick={resetColors}
         style={{

@@ -11,7 +11,6 @@ export const MagnifierTextProvider = ({ children }) => {
   const [isMagnifierActive, setMagnifierActive] = useState(false);
 
   useEffect(() => {
-    // تحقق من حالة المود من localStorage عند تحميل الصفحة
     const storedState = localStorage.getItem('magnifier');
     if (storedState === 'active') {
       setMagnifierActive(true);
@@ -26,11 +25,10 @@ export const MagnifierTextProvider = ({ children }) => {
       const text = e.target.innerText?.trim();
       if (!text) return;
 
-      // التحقق من عدم وجود العنصر داخل الـ sidebar
-      if (e.target.closest(`.${styles.sidebar}`)) return; // إذا كان العنصر داخل sidebar، لا نقوم بعرض التولتيب
+      if (e.target.closest(`.${styles.sidebar}`)) return; 
 
       tooltip = document.createElement('div');
-      tooltip.style.position = 'fixed'; // استخدام 'fixed' بدلاً من 'absolute' لتجنب التأثر بالتخطيط
+      tooltip.style.position = 'fixed'; 
       tooltip.style.backgroundColor = 'black';
       tooltip.style.color = 'white';
       tooltip.style.padding = '10px';
@@ -44,7 +42,7 @@ export const MagnifierTextProvider = ({ children }) => {
       tooltip.style.wordBreak = 'break-word';
       tooltip.style.lineHeight = '1.4';
       tooltip.style.overflowWrap = 'break-word';
-      tooltip.style.pointerEvents = 'none'; // منع التفاعل مع المؤشر
+      tooltip.style.pointerEvents = 'none'; 
 
       tooltip.innerText = text;
 
@@ -60,7 +58,7 @@ export const MagnifierTextProvider = ({ children }) => {
         mouseMoveTimeout = setTimeout(() => {
           tooltip.style.left = `${moveEvent.clientX + 10}px`;
           tooltip.style.top = `${moveEvent.clientY + 10}px`;
-        }, 10); // تحديث الموقع كل 10 مللي ثانية فقط
+        }, 10); 
       };
 
       const handleMouseLeave = () => {
@@ -92,7 +90,6 @@ export const MagnifierTextProvider = ({ children }) => {
 
   const toggleTextMagnifier = () => {
     setMagnifierActive((prev) => !prev);
-    // تخزين حالة المود في localStorage
     if (!isMagnifierActive) {
       localStorage.setItem('magnifier', 'active');
     } else {

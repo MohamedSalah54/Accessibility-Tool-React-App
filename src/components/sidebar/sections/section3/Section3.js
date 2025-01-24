@@ -47,12 +47,10 @@ const Section3 = () => {
   const handleCardClick = (id, toggleFunction) => {
     setActiveCard((prevActiveCard) => {
       if (prevActiveCard === id) {
-        // إذا كان المود الحالي هو النشط، قم بإلغائه فقط
         toggleFunction();
         return null;
       }
 
-      // إلغاء تفعيل المود النشط السابق إذا كان موجودًا
       if (prevActiveCard) {
         const previousOption = options.find((option) => option.id === prevActiveCard);
         if (previousOption) {
@@ -60,9 +58,8 @@ const Section3 = () => {
         }
       }
 
-      // تفعيل المود الجديد
       toggleFunction();
-      return id; // تحديث المود النشط
+      return id; 
     });
   };
 

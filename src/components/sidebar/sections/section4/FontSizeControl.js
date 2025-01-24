@@ -1,7 +1,7 @@
 import { useFontContext } from "../../../../context/FontContext";
 import styles from './Section4.module.css';
 import { FaCirclePlus, FaCircleMinus } from 'react-icons/fa6';
-import { useState } from 'react'; // استيراد useState
+import { useState } from 'react'
 import { BiFontColor } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
 
@@ -9,35 +9,31 @@ import { useTranslation } from "react-i18next";
 const FontSizeControl = ({ selectedProperty }) => {
   const { updateFont } = useFontContext();
   
-  // حالة لتحديد عرض CustomFont
   const [showCustomFont, setShowCustomFont] = useState(false);
 
-  // دالة لزيادة أو تقليل القيمة المحددة
   const handleIncrease = () => {
     updateFont(selectedProperty, true);
-    setShowCustomFont(true); // عند الضغط على FaCirclePlus تظهر الـ CustomFont
+    setShowCustomFont(true); 
   };
 
   const handleDecrease = () => {
     updateFont(selectedProperty, false);
-    setShowCustomFont(true); // عند الضغط على FaCircleMinus تظهر الـ CustomFont
+    setShowCustomFont(true); 
   };
 
   return (
     <div className={styles.slider_container}>
       <div className={styles.slider}>
-        {/* تعديل حجم الخط */}
         <FaCircleMinus 
           className={`${styles.slider_icon} ${styles.left}`} 
-          onClick={handleDecrease} // تقليل حجم الخط
+          onClick={handleDecrease} 
         />
         <FaCirclePlus 
           className={`${styles.slider_icon} ${styles.right}`} 
-          onClick={handleIncrease} // زيادة حجم الخط
+          onClick={handleIncrease} 
         />
       </div>
 
-      {/* عرض الـ CustomFont فقط إذا كانت showCustomFont true */}
       {showCustomFont && <CustomFont />}
     </div>
   );
@@ -46,17 +42,16 @@ const FontSizeControl = ({ selectedProperty }) => {
 const CustomFont = () => {
   const [showCustomFont, setShowCustomFont] = useState(false);
   const { updateFont } = useFontContext();
-  const [selectedProperty, setSelectedProperty] = useState("fontSize"); // الخاصية المحددة (افتراضيًا هي fontSize)
+  const [selectedProperty, setSelectedProperty] = useState("fontSize"); 
 
-  // دالة لزيادة أو تقليل القيمة المحددة
   const handleIncrease = () => {
     updateFont(selectedProperty, true);
-    setShowCustomFont(true); // عند الضغط على FaCirclePlus تظهر الـ CustomFont
+    setShowCustomFont(true); 
   };
 
   const handleDecrease = () => {
     updateFont(selectedProperty, false);
-    setShowCustomFont(true); // عند الضغط على FaCircleMinus تظهر الـ CustomFont
+    setShowCustomFont(true); 
   };
   
       const [isNavigateIcon, setisNavigateIcon] = useState(true)
@@ -66,9 +61,9 @@ const CustomFont = () => {
   const {t} = useTranslation()
   const handlePropertyButtonClick = (property) => {
     setSelectedProperty(property);
-    setActivePropertyButton(property); // تعيين الزر النشط في الخصائص
+    setActivePropertyButton(property);
   };
-  const [activePropertyButton, setActivePropertyButton] = useState(""); // حفظ الزر النشط في قائمة الخصائص
+  const [activePropertyButton, setActivePropertyButton] = useState("")
 
   const customFontContainer = {
     backgroundColor: "#fff",
@@ -84,15 +79,15 @@ const CustomFont = () => {
     position: "absolute",
     top: "1.5em",
     left: "7em",
-    display: "flex",  // استخدام flex layout
-    gap: "1em", // تحديد المسافة بين الأزرار
+    display: "flex", 
+    gap: "1em", 
   };
   
   const btn = {
-    padding: "0.5em 1em",  // إضافة بعض الحشو لتحديد حجم الأزرار
-    border: "none",  // إضافة حدود بسيطة
-    backgroundColor: "#f0f0f0",  // اللون الخلفي للأزرار
-    cursor: "pointer",  // تغيير شكل المؤشر عند التمرير على الزر
+    padding: "0.5em 1em",  
+    border: "none",  
+    backgroundColor: "#f0f0f0",  
+    cursor: "pointer",  
     borderRadius:"10PX"
   };
   const containerSlider = {
@@ -143,7 +138,7 @@ const CustomFont = () => {
          <button
   onClick={() => handlePropertyButtonClick("fontSize")}
   style={{
-    ...btn, // الأنماط الافتراضية
+    ...btn, 
     backgroundColor: activePropertyButton === "fontSize" ? "#28a745" : btn.backgroundColor,
     color: activePropertyButton === "fontSize" ? "#fff" : "#000",
   }}
@@ -187,14 +182,13 @@ const CustomFont = () => {
          </div>
          <div style={containerSlider}>
            <div style={slider}>
-             {/* تعديل حجم الخط */}
              <FaCircleMinus 
                className={`${styles.slider_icon} ${styles.left}`} 
-               onClick={handleDecrease} // تقليل حجم الخط
+               onClick={handleDecrease} 
              />
              <FaCirclePlus 
                className={`${styles.slider_icon} ${styles.right}`} 
-               onClick={handleIncrease} // زيادة حجم الخط
+               onClick={handleIncrease} 
              />
            </div>
          </div>

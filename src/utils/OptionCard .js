@@ -1,4 +1,3 @@
-// src/components/OptionCard.js
 
 import { FaCheck } from "react-icons/fa";
 import styles from "../components/sidebar/sections/section2/Section2.module.css";

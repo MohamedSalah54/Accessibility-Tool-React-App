@@ -53,7 +53,7 @@ const CardSection4 = () => {
   const { toggleTooltipMode } = useImageDescription();
 
   const [isOpen, setIsOpen] = useState(true);
-  const [selectedCards, setSelectedCards] = useState([]); // تأكيد أن القيمة هي مصفوفة فارغة في البداية
+  const [selectedCards, setSelectedCards] = useState([]); 
   const [showPageStructure, setShowPageStructure] = useState(false);
   const { isPreviewMode, togglePreviewMode, openPreviewInNewWindow } = usePagePreview();
 
@@ -63,12 +63,10 @@ const CardSection4 = () => {
     }
   }, [isPreviewMode, openPreviewInNewWindow]);
 
-  // تحميل البيانات من localStorage عند بدء التشغيل
   useEffect(() => {
     const storedCards = localStorage.getItem('selectedCards');
     if (storedCards) {
       const parsedCards = JSON.parse(storedCards);
-      // التأكد من أن parsedCards هو مصفوفة
       if (Array.isArray(parsedCards)) {
         setSelectedCards(parsedCards);
       } else {
@@ -77,9 +75,8 @@ const CardSection4 = () => {
     }
   }, []);
 
-  // حفظ التحديدات في localStorage عند تغييره
   useEffect(() => {
-    if (Array.isArray(selectedCards)) {  // تأكد من أن selectedCards هو مصفوفة
+    if (Array.isArray(selectedCards)) {  
       localStorage.setItem('selectedCards', JSON.stringify(selectedCards));
     }
   }, [selectedCards]);
@@ -94,10 +91,8 @@ const CardSection4 = () => {
     } else {
       setSelectedCards((prevSelectedCards) => {
         if (prevSelectedCards.includes(card)) {
-          // إذا كان الكارت محدد بالفعل، قم بإزالته من المصفوفة
           return prevSelectedCards.filter((selectedCard) => selectedCard !== card);
         } else {
-          // إذا لم يكن الكارت محدد، أضفه إلى المصفوفة
           return [...prevSelectedCards, card];
         }
       });

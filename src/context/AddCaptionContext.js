@@ -6,7 +6,6 @@ export const AddCaptionProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("tooltipMode")) || false
   );
 
-  // تحديث حالة localStorage عند تغيير الحالة
   useEffect(() => {
     if (isTooltipMode) {
       localStorage.setItem("tooltipMode", true);
@@ -15,12 +14,10 @@ export const AddCaptionProvider = ({ children }) => {
     }
   }, [isTooltipMode]);
 
-  // تفعيل وإلغاء الوضع
   const toggleCaption = () => {
     setIsTooltipMode((prev) => !prev);
   };
 
-  // التعامل مع الفيديوهات والصوتيات عند تفعيل الوضع
   useEffect(() => {
     if (!isTooltipMode) return;
 

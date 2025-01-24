@@ -26,21 +26,20 @@
     font-size: 20px;
   }
   
-  /* عندما تكون اللغة عربية */
   .arabic .drop_btn1 {
-    flex-direction: row-reverse; /* تغيير الترتيب ليكون الزر أولاً ثم الأيقونة */
+    flex-direction: row-reverse; 
   }
   
   .arabic .dropdown {
-    order: 2; /* الزر يأتي أولاً */
+    order: 2; 
   }
   
   .arabic .drop_icon {
-    order: 1; /* الأيقونة تأتي بعد الزر */
+    order: 1; 
   }
   
 .selectedCard{
-  border: 2px solid #4caf50 !important; /* لون البوردر عند التحديد */
+  border: 2px solid #4caf50 !important; 
   position: relative;
 }
   
@@ -120,7 +119,7 @@
   }
   
   .card_sec_line.active {
-    border: 2px solid #4caf50; /* لون البوردر عند التحديد */
+    border: 2px solid #4caf50; 
     position: relative;
   }
   
@@ -129,10 +128,10 @@
     top: 5px;
     right: 5px;
     font-size: 18px;
-    color: #4caf50; /* لون علامة الصح */
+    color: #4caf50;
     font-weight: bold;
   }
   .activeButton {
     background-color: green;
-    color: white;  /* تغيير النص للون الأبيض */
+    color: white; 
   }

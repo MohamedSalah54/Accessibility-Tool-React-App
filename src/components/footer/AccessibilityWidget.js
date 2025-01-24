@@ -2,9 +2,9 @@ import { useState } from "react";
 import styles from './Footer.module.css'
 
 const AccessabilityWidget = ({ closeWidget }) => {
-    const [selectedOption, setSelectedOption] = useState(""); // لتتبع الاختيار الحالي
+    const [selectedOption, setSelectedOption] = useState(""); 
 
-    const options = ["For the current session at this tab only", "For the next 24 hours", "For a week", "For a month"]; // الخيارات المتاحة
+    const options = ["For the current session at this tab only", "For the next 24 hours", "For a week", "For a month"]; 
   
     const handleOptionChange = (option) => {
       setSelectedOption(option);
@@ -25,7 +25,7 @@ const AccessabilityWidget = ({ closeWidget }) => {
                         margin: "10px 0",
                         cursor: "pointer",
                     }}
-                    onClick={() => handleOptionChange(option)} // لتحديث الاختيار
+                    onClick={() => handleOptionChange(option)}
                     >
                     <div
                         style={{

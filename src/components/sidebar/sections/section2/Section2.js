@@ -6,13 +6,13 @@ import { useKeyboardNavigation } from "../../../../context/keyboardNavigationCon
 import { useSmartNavigateContext } from "../../../../context/SmartNavigateContext";
 import { useTextReader } from "../../../../context/TextReaderContext";
 import styles from "./Section2.module.css";
-import OptionCard from "../../../../utils/OptionCard "; // افترض أنك أنشأت المكون OptionCard في ملف منفصل
-import { options } from '../../../../utils/CardSection2'; // استيراد الخيارات
-import { useTranslation } from 'react-i18next'; // استيراد hook الترجمة
+import OptionCard from "../../../../utils/OptionCard "; 
+import { options } from '../../../../utils/CardSection2';
+import { useTranslation } from 'react-i18next'; 
 
 const Section2 = () => {
   const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
-  const { t } = useTranslation(); // استخدام hook الترجمة
+  const { t } = useTranslation(); 
   const { toggleMode } = useTextReader();
   const { toggleSmartMode } = useSmartNavigateContext();
   const { toggleKeyboardNavigation } = useKeyboardNavigation();
@@ -31,9 +31,7 @@ const Section2 = () => {
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   const handleCardClick = (key, toggleFunction) => {
-    // في حالة المودات الثلاثة (keyboardNavigation، smartNavigation، screenReader)
     if (["keyboardNavigation", "smartNavigation", "screenReader"].includes(key)) {
-      // قم بإلغاء تفعيل المودات الثلاثة الأخرى قبل تفعيل المود الحالي
       setSelectedCards((prev) => ({
         ...prev,
         keyboardNavigation: false,
@@ -47,7 +45,7 @@ const Section2 = () => {
         [key]: !prev[key],
       }));
     }
-    toggleFunction(); // استدعاء الدالة الفعلية هنا
+    toggleFunction(); 
   };
 
   return (
@@ -68,11 +66,10 @@ const Section2 = () => {
             <OptionCard
               key={key}
               icon={icon}
-              title={t(titleKey)} // استخدام الترجمة باستخدام المفتاح
-              description={t(descriptionKey)} // الترجمة باستخدام المفتاح
+              title={t(titleKey)} 
+              description={t(descriptionKey)} 
               isSelected={selectedCards[key]}
               onClick={() => {
-                // تمرير الدالة الصحيحة هنا بناءً على الخيار
                 switch (key) {
                   case "screenReader":
                     handleCardClick(key, toggleScreenReader);

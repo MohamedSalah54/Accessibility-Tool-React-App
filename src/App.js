@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Sidebar from './components/sidebar/Sidebar';
 import { AccessibilityProvider } from './context/AccessMode';
 import { ColorProvider } from './context/ColorContext';
-import { CursorProvider } from './context/CursorContext'; // تأكد من استيراد CursorProvider
+import { CursorProvider } from './context/CursorContext'; 
 import { FontProvider } from './context/FontContext';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { BrightModeProvider } from './context/BrightModeContext'

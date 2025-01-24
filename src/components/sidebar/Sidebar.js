@@ -16,13 +16,12 @@ import Sendfeedback from "../footer/Sendfeedback";
 import AccessabilityWidget from "../footer/AccessibilityWidget";
 import styles from './AccessibilitySidebar.module.css'
 import DarkModeContext from "../../context/DarkModeContext";
-import i18n from '../../context/i18n'; // استيراد i18n من الملف الذي يحتوي على الإعدادات
+import i18n from '../../context/i18n';
 import { useTranslation } from "react-i18next";
 
 const AccessibilitySidebar = () => {
   const {toggleDarkMode} = useContext(DarkModeContext)
   const { t } = useTranslation()
-  // القيم الافتراضية
   const defaultState = {
     isOpen: false,
     iconVisible: false,
@@ -31,15 +30,13 @@ const AccessibilitySidebar = () => {
   const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
 
   useEffect(() => {
-    // إذا كانت اللغة في localStorage موجودة، نقوم بتغيير اللغة في i18n
     if (language) {
-      i18n.changeLanguage(language);  // تغيير اللغة في i18n
-      localStorage.setItem("language", language); // تحديث localStorage
+      i18n.changeLanguage(language);  
+      localStorage.setItem("language", language); 
     }
-  }, [language, i18n]);  // إضافة i18n كـ dependency
+  }, [language, i18n]);  
 
 
-  // إدارة الحالة
   const [isOpen, setIsOpen] = useState(defaultState.isOpen);
   const [iconVisible, setIconVisible] = useState(defaultState.iconVisible);
   const [expanded, setExpanded] = useState(defaultState.expanded);
@@ -48,30 +45,23 @@ const AccessibilitySidebar = () => {
   const [isWidgetVisable, setIsWidgetVisable] = useState(false);
 
 
-  // تبديل التوسيع
   const toggleExpand = () => setExpanded(!expanded);
 
-  // تبديل الشريط الجانبي
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  // إعادة الضبط للقيم الافتراضية
   const resetToDefault = () => {
-    // مسح جميع البيانات من localStorage
     localStorage.clear();
 
-    // عمل رفريش للصفحة
     window.location.reload();
   };
 
-  // إظهار البطاقة
   const showCard = () => {
     setIsCardVisible(true);
-    setIsOpen(false); // إغلاق الشريط الجانبي عند ظهور البطاقة
+    setIsOpen(false); 
   };
 
-  // إغلاق البطاقة
   const closeCard = () => {
-    setIsCardVisible(false); // إخفاء البطاقة عند الضغط على "Close"
+    setIsCardVisible(false); 
   };
 
   const showFeedback = () => {
@@ -83,7 +73,6 @@ const AccessibilitySidebar = () => {
     setIsFeedbackVisable(false)
   }
 
-  /** Accessibility Wedget */
 
   const showWidget = () => {
     setIsWidgetVisable(true)
@@ -107,7 +96,7 @@ const AccessibilitySidebar = () => {
       {!isOpen && !isCardVisible && !isFeedbackVisable && (
         <button
           onClick={toggleSidebar}
-          className={`${styles.toggleBtn} ${language === "ar" ? styles.arabic : ""}`}  // إضافة الكلاس حسب اللغة
+          className={`${styles.toggleBtn} ${language === "ar" ? styles.arabic : ""}`}  
           onMouseEnter={() => setIconVisible(true)}
           onMouseLeave={() => setIconVisible(false)}
         >
@@ -116,7 +105,6 @@ const AccessibilitySidebar = () => {
         </button>
       )}
 
-      {/* الشريط الجانبي */}
       <div className={`${styles.sidebar} ${isOpen ? styles.open : ""} ${expanded ? styles.expanded : ""} ${language === "ar" ? styles.arabic : ""} `} >
         <div className={styles.header}>
           <Navside className={`${styles.INDmenuHeader_bg} ${expanded ? styles.INDmenuHeader_bg_expanded : ""}`} />
@@ -132,7 +120,6 @@ const AccessibilitySidebar = () => {
               onChange={(e) => {
                 const selectedLanguage = e.target.value;
                 setLanguage(selectedLanguage);
-                // إعادة تحميل الصفحة بعد تغيير اللغة
                 window.location.reload();
               }}
             >

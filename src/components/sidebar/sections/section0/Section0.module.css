@@ -27,7 +27,6 @@
     font-size: 20px;
   }
   
-  /* عندما تكون اللغة عربية */
 
    .title_Ai h2{
     position: absolute;
@@ -61,7 +60,7 @@
     border:1px solid rgb(217, 206, 206);
     display: flex;
     position: relative;
-    overflow: hidden; /* إخفاء الـ scrollbar */
+    overflow: hidden;
 
   }
   .icon_Ai{
@@ -91,7 +90,7 @@
     font-weight: 30;
     font-size: 20px;
     left: 3.5em;
-    white-space: nowrap; /* منع التفاف النص */
+    white-space: nowrap; 
   }
   
   

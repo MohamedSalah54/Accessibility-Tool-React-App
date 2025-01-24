@@ -21,7 +21,6 @@ export const ReadFocusProvider = ({ children }) => {
     let overlayDiv;
 
     if (readFocusMode) {
-      // إنشاء الطبقة المظللة
       overlayDiv = document.createElement("div");
       overlayDiv.style.position = "fixed";
       overlayDiv.style.pointerEvents = "none";
@@ -29,18 +28,17 @@ export const ReadFocusProvider = ({ children }) => {
       overlayDiv.style.left = "0";
       overlayDiv.style.width = "100vw";
       overlayDiv.style.height = "100vh";
-      overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // تخفيف الظل
+      overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; 
       overlayDiv.style.zIndex = "1000";
       overlayDiv.style.transition = "clip-path 0.2s ease";
-      overlayDiv.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"; // مبدئيًا لا يوجد جزء غير مظلل
+      overlayDiv.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"; 
       document.body.appendChild(overlayDiv);
 
-      // تحديث الإضاءة بناءً على موقع الماوس
       const handleMouseMove = (event) => {
-        const focusHeight = 150; // ارتفاع المنطقة المضيئة
+        const focusHeight = 150;
         const y = event.clientY;
 
-        // تعيين المنطقة المضيئة كمستطيل بعرض الشاشة وارتفاع معين
+        
         overlayDiv.style.clipPath = `
           polygon(
             0 0, 
@@ -56,7 +54,6 @@ export const ReadFocusProvider = ({ children }) => {
 
       document.addEventListener("mousemove", handleMouseMove);
 
-      // إزالة التأثير عند إلغاء الوضع
       return () => {
         document.body.removeChild(overlayDiv);
         document.removeEventListener("mousemove", handleMouseMove);

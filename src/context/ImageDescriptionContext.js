@@ -7,7 +7,6 @@ export const ImageDescriptionProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("tooltipMode")) || false
   );
 
-  // تحديث حالة localStorage عند تغيير الحالة
   useEffect(() => {
     if (isTooltipMode) {
       localStorage.setItem("tooltipMode", true);
@@ -16,12 +15,10 @@ export const ImageDescriptionProvider = ({ children }) => {
     }
   }, [isTooltipMode]);
 
-  // تفعيل وإلغاء الوضع
   const toggleTooltipMode = () => {
     setIsTooltipMode((prev) => !prev);
   };
 
-  // التعامل مع الصور عند تفعيل الوضع
   useEffect(() => {
     if (!isTooltipMode) return;
 

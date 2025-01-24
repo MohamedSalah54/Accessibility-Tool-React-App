@@ -17,7 +17,6 @@ const Section0 = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // تحديث اللغة في localStorage
     localStorage.setItem("language", language);
   }, [language]);
 
@@ -28,7 +27,7 @@ const Section0 = () => {
   return (
     <div
       className={styles.dropdown_container}
-      style={{ direction: language === "ar" ? "rtl" : "ltr" }} // تغيير اتجاه النص
+      style={{ direction: language === "ar" ? "rtl" : "ltr" }} 
     >
       <button
         className={`${styles.drop_btn1} ${language === "ar" ? styles.arabic : ""}`}

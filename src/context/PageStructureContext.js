@@ -36,34 +36,31 @@ const PageStructure = () => {
     const [landmarks, setLandmarks] = useState([]);
   
     useEffect(() => {
-      // استرجاع جميع العناوين مرتبة من h1 إلى h6
       const headingsArray = ["h1", "h2", "h3", "h4", "h5", "h6"]
         .flatMap((tag, index) =>
           Array.from(document.querySelectorAll(tag)).map((heading) => ({
             tag: heading.tagName,
             text: heading.textContent.trim(),
-            id: `heading-${index}`, // إضافة ID مميز لكل عنصر
+            id: `heading-${index}`, 
           }))
         );
       setHeadings(headingsArray);
   
-      // استرجاع جميع الروابط مع النصوص فقط
       const linksArray = Array.from(document.querySelectorAll("a"))
         .map((link, index) => ({
           text: link.textContent.trim(),
           href: link.getAttribute("href"),
-          id: `link-${index}`, // إضافة ID مميز لكل رابط
+          id: `link-${index}`, 
         }))
-        .filter((link) => link.text !== ""); // تجاهل الروابط بدون نص
+        .filter((link) => link.text !== "");
       setLinks(linksArray);
   
-      // استرجاع عناصر landmarks
       const landmarksArray = Array.from(
         document.querySelectorAll("header, nav, main, aside, footer")
       ).map((landmark, index) => ({
         tag: landmark.tagName,
-        text: landmark.textContent.trim().slice(0, 30), // نص قصير للتوضيح
-        id: `landmark-${index}`, // إضافة ID مميز لكل Landmark
+        text: landmark.textContent.trim().slice(0, 30), 
+        id: `landmark-${index}`, 
       }));
       setLandmarks(landmarksArray);
     }, []);
